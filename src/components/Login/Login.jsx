@@ -1,20 +1,19 @@
 import { Button, Form, Input } from "antd";
 import { useContext, useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
 
 function Login() {
 
   const { login, message } = useContext(UserContext);
   const [msg, setMsg] = useState(message);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setMsg(message);
     if (message.startsWith("Welcome")) {
       setTimeout(() => {
-        // navigate("/");
-        alert("TODO: navigate to home")
+        navigate("/");
       }, 500);
     }
   }, [message]);
@@ -36,7 +35,7 @@ function Login() {
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        autoComplete="off"
+        // autoComplete="off"
       >
         <Form.Item
           label="Email"
