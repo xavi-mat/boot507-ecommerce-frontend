@@ -23,7 +23,7 @@ function Login() {
   }
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    // console.log("Failed:", errorInfo);
   }
 
   return (
@@ -35,7 +35,6 @@ function Login() {
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        // autoComplete="off"
       >
         <Form.Item
           label="Email"
