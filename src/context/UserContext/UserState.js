@@ -42,6 +42,13 @@ export const UserProvider = ({ children }) => {
         }
     };
 
+    const setMessage = async (msg) => {
+        dispatch({
+            type: "SET_MESSAGE",
+            payload: msg,
+        })
+    }
+
     return (
         <UserContext.Provider
             value={{
@@ -49,6 +56,7 @@ export const UserProvider = ({ children }) => {
                 user: state.user,
                 message: state.message,
                 login,
+                setMessage,
             }}
         >
             {children}

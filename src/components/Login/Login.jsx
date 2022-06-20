@@ -28,6 +28,7 @@ function Login() {
 
   return (
     <div className="container">
+    <h1>Login</h1>
       <Form
         name="basic"
         labelCol={{ span: 8 }}
@@ -39,7 +40,10 @@ function Login() {
         <Form.Item
           label="Email"
           name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
+          rules={[
+            { type: 'email', message: 'Please input a valid email.', },
+            { required: true, message: "Please input a valid email." }
+          ]}
         >
           <Input />
         </Form.Item>
@@ -47,14 +51,14 @@ function Login() {
         <Form.Item
           label="Password"
           name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[{ required: true, message: "Please input your password." }]}
         >
           <Input.Password />
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
-            Submit
+            Login
           </Button>
         </Form.Item>
       </Form>
