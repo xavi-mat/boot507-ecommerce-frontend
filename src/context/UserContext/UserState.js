@@ -48,7 +48,21 @@ export const UserProvider = ({ children }) => {
             payload: msg,
         })
     }
-
+    const logout = async () => {
+        const token = JSON.parse(localStorage.getItem("token"));
+        const res = await axios.delete(API_URL + "/users/logout", {
+            headers: {
+                authorization: token,
+            },
+        });
+        dispatch({
+            type: "LOGOUT",
+            payload: res.data,
+        });
+        if (res.data) {
+            localStorage.removeItem("token");
+        }
+    };
     return (
         <UserContext.Provider
             value={{
@@ -57,9 +71,12 @@ export const UserProvider = ({ children }) => {
                 message: state.message,
                 login,
                 setMessage,
+                logout
             }}
         >
             {children}
         </UserContext.Provider>
     );
+
+
 };

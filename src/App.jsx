@@ -9,6 +9,7 @@ import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
 import Product from "./components/Product/Product";
 import { ProductProvider } from "./context/ProductContext/ProductState";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/product/:id" element={<Product />} />
             {/* <Route path="/orders" element={<Orders />} /> */}
-            {/* <Route path="/profile" element={<Profile />} /> */}
+            <Route path="/profile" element={<Profile />} />
             {/* <Route path="/cart" element={<Cart />} /> */}
             
           </Routes>
