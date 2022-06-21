@@ -7,6 +7,7 @@ const initialProductState = {
     description: "",
     image: "",
     id: null,
+    cart: [],
 }
 
 export const ProductContext = createContext(initialProductState);
@@ -20,6 +21,15 @@ export const ProductProvider = ({ children }) => {
             payload: product,
         })
     }
+
+    const addCart = (product) => {
+        dispatch({
+            type: "ADD_CART",
+            payload: product,
+        });
+        console.log(state.cart)
+    };
+
     return (
         <ProductContext.Provider
             value={{
@@ -28,7 +38,9 @@ export const ProductProvider = ({ children }) => {
                 description: state.description,
                 image: state.image,
                 id: state.id,
+                cart: state.cart,
                 setProduct,
+                addCart,
             }}
             >
                 {children}

@@ -27,6 +27,7 @@ export const OrdersProvider = ({ children }) => {
           type: "GET_ORDERS",
           payload: res.data.order,
         })
+        console.log(state.orders)
       }
     } catch (error) {
       console.log(error)

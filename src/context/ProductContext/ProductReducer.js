@@ -9,8 +9,13 @@ const product = (state, action) => {
                 image: action.payload.image,
                 id: action.payload.id,
             };
-            default:
-                return state;
+        case "ADD_CART":
+            return {
+                ...state,
+                cart: [action.payload, ...state.cart]
+            }
+        default:
+            return state;
     }
 };
 
