@@ -7,11 +7,14 @@ import Home from "./components/Home/Home";
 import Products from "./components/Products/Products"
 import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
+import Product from "./components/Product/Product";
+import { ProductProvider } from "./context/ProductContext/ProductState";
 
 function App() {
   return (
     <>
       <UserProvider>
+        <ProductProvider>
         <BrowserRouter>
           <Header />
           <Routes>
@@ -19,12 +22,14 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/product/:id" element={<Product />} />
             {/* <Route path="/orders" element={<Orders />} /> */}
             {/* <Route path="/profile" element={<Profile />} /> */}
             {/* <Route path="/cart" element={<Cart />} /> */}
-            {/* <Route path="/product/:id" element={<Product />} /> */}
+            
           </Routes>
         </BrowserRouter>
+        </ProductProvider>
       </UserProvider>
     </>
   );
