@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import {Link} from 'react-router-dom'
+import { ProductContext } from '../../../context/ProductContext/ProductState'
 
 function ProductsMin({name,price,description,image,id}) {
+  const {setProduct}= useContext(ProductContext)
+  const handleLinkClick = () => {
+    setProduct({name,price,description,image,id})
+  }
   return (
     <div> 
 
@@ -8,7 +14,7 @@ function ProductsMin({name,price,description,image,id}) {
         <div>{price}</div>
         <div>{description}</div>
         <div>{image}</div>
-        <button>{id}</button>
+        <Link onClick={handleLinkClick} to={"/product/"+id}>Go to product</Link>
 
     </div>
   )
