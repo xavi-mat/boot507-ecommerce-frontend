@@ -22,6 +22,7 @@ function App() {
             {/* <Route path="/orders" element={<Orders />} /> */}
             {/* <Route path="/profile" element={<Profile />} /> */}
             {/* <Route path="/cart" element={<Cart />} /> */}
+            {/* <Route path="/product/:id" element={<Product />} /> */}
           </Routes>
         </BrowserRouter>
       </UserProvider>
