@@ -1,21 +1,16 @@
-import { useState } from "react"
-import axios from "axios"
-import { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { ProductsContext } from "../../context/ProductsContext/ProductsState";
 import ProductsMin from "./ProductsMin/ProductsMin";
 
-function Products() {
-
-  const [products, setProducts] = useState([]);
+const Products = () => {
+  const { getProducts, products } = useContext(ProductsContext);
 
   useEffect(() => {
-    async function getElement() {
-      const res = await axios.get("http://localhost:8080/products/list");
-      setProducts(res.data.product)
-    }
-    getElement();
+    getProducts();
   }, []);
 
-  const element = products.map((p) => <ProductsMin
+  const element = products.map((p, i) => <ProductsMin
+    key={i}
     name={p.name}
     price={p.price}
     description={p.description}
@@ -24,12 +19,11 @@ function Products() {
   );
 
   return (
-
     <div>
       <h1>Products</h1>
       {element}
     </div>
   )
-}
+};
+export default Products;
 
-export default Products
