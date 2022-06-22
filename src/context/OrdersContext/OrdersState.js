@@ -3,7 +3,6 @@ import axios from "axios";
 import OrdersReducer from "./OrdersReducer";
 
 const API_URL = "http://localhost:8080";
-const token = JSON.parse(localStorage.getItem("token"));
 
 const initialOrdersState = {
   orders: [],
@@ -17,6 +16,7 @@ export const OrdersProvider = ({ children }) => {
 
   const getOrders = async () => {
     try {
+      const token = JSON.parse(localStorage.getItem("token"));
       if (token) {
         const res = await axios.get(
           API_URL + "/orders",
@@ -31,22 +31,38 @@ export const OrdersProvider = ({ children }) => {
     } catch (error) {
       console.log(error)
     }
-
   };
 
-  // const createOrder = async (order) => {
-  //   try {
-  //     // TODO: Create order and add products to order
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const createOrder = async (cart) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const res = await axios.post(
+        API_URL + "/orders/",
+        {},
+        { headers: { authorization: token } }
+      );
+      const OrderId = res.data.OrderId;
+
+      cart.forEach(async ProductId => {
+        await axios.post(
+          API_URL + "/orders/product/",
+          { OrderId, ProductId, quantity: 1 },
+          { headers: { authorization: token } }
+        );
+      });
+
+    } catch (error) {
+      console.error(error);
+      console.log("ERROR MESSAGE:", error.response.data.message)
+    }
+  };
 
   return (
     <OrdersContext.Provider
       value={{
         orders: state.orders,
-        getOrders
+        getOrders,
+        createOrder,
       }}
     >
       {children}

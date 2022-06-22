@@ -5,7 +5,7 @@ import UserReducer from "./UserReducer";
 const token = JSON.parse(localStorage.getItem("token"));
 
 const initialUserstate = {
-    token: token ? token : null,
+    token: token,
     user: null,
     message: "",
 }

@@ -13,7 +13,7 @@ function Order({ order }) {
       <div>Status: {order.status}</div>
       <div>Products:</div>
       <ul>{detail}</ul>
-      {order.status === "open" ? <button>Pay now</button> : null}
+      {/* {order.status === "open" ? <button>Pay now</button> : null} */}
       <hr />
     </>
   )

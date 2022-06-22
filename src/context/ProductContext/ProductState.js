@@ -1,13 +1,15 @@
 import { createContext, useReducer } from "react"
 import ProductReducer from "./ProductReducer"
 
+const cart = JSON.parse(localStorage.getItem("cart"));
+
 const initialProductState = {
     name: "",
     price: null,
     description: "",
     image: "",
     id: null,
-    cart: [],
+    cart: cart ?? [],
 }
 
 export const ProductContext = createContext(initialProductState);
@@ -29,6 +31,12 @@ export const ProductProvider = ({ children }) => {
         });
     };
 
+    const clearCart = () => {
+        dispatch({
+            type: "CLEAR_CART",
+        })
+    };
+
     return (
         <ProductContext.Provider
             value={{
@@ -40,6 +48,7 @@ export const ProductProvider = ({ children }) => {
                 cart: state.cart,
                 setProduct,
                 addCart,
+                clearCart,
             }}
             >
                 {children}
