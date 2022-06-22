@@ -22,12 +22,11 @@ export const ProductProvider = ({ children }) => {
         })
     }
 
-    const addCart = (product) => {
+    const addCart = (productId) => {
         dispatch({
             type: "ADD_CART",
-            payload: product,
+            payload: productId,
         });
-        console.log(state.cart)
     };
 
     return (

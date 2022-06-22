@@ -1,10 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ProductContext } from '../../../context/ProductContext/ProductState'
 
 function ProductsMin({ name, price, description, image, id }) {
 
-  const { setProduct, addCart } = useContext(ProductContext)
+  const { setProduct, addCart, cart } = useContext(ProductContext)
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const handleLinkClick = () => {
     setProduct({ name, price, description, image, id })
@@ -17,7 +21,7 @@ function ProductsMin({ name, price, description, image, id }) {
       <div>{description}</div>
       <div>{image}</div>
       <Link onClick={handleLinkClick} to={"/product/" + id}>Go to product</Link>
-      <button onClick={() => addCart({ name, price, description, image, id })}>
+      <button onClick={() => {addCart(id)}}>
         Add to cart
       </button>
     </div>

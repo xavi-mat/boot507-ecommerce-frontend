@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { UserProvider } from "./context/UserContext/UserState";
 import "./App.css"
 
 import Register from "./components/Register/Register";
@@ -9,9 +8,11 @@ import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
 import Product from "./components/Product/Product";
 import Orders from "./components/Orders/Orders";
-
-import { ProductProvider } from "./context/ProductContext/ProductState";
 import Profile from "./components/Profile/Profile";
+import Cart from "./components/Cart/Cart";
+
+import { UserProvider } from "./context/UserContext/UserState";
+import { ProductProvider } from "./context/ProductContext/ProductState";
 import { OrdersProvider } from "./context/OrdersContext/OrdersState";
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
                 <Route path="/product/:id" element={<Product />} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/profile" element={<Profile />} />
-                {/* <Route path="/cart" element={<Cart />} /> */}
+                <Route path="/cart" element={<Cart />} />
               </Routes>
             </BrowserRouter>
           </OrdersProvider>

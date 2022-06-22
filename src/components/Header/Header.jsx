@@ -11,6 +11,7 @@ function Header() {
   const commonItems = [
     { label: <Link to="/">🏠</Link>, key: 'home' },
     { label: <Link to="/products">Products</Link>, key: 'products' },
+    { label: <Link to="/cart">🛒</Link>, key: 'cart' },
   ];
   const unloggedItems = [
     { label: <Link to="/register">Register</Link>, key: 'register' },
@@ -19,7 +20,6 @@ function Header() {
   const loggedInItems = [
     { label: <Link to="/orders">Orders</Link>, key: 'orders' },
     { label: <Link to="/profile">Profile</Link>, key: 'profile' },
-    { label: <Link to="/cart">🛒</Link>, key: 'cart' },
   ];
 
   const items = user ?

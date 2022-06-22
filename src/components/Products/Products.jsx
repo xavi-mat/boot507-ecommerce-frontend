@@ -1,8 +1,7 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import axios from "axios"
 import { useEffect } from "react";
 import ProductsMin from "./ProductsMin/ProductsMin";
-import { ProductContext } from "../../context/ProductContext/ProductState";
 
 function Products() {
 
@@ -14,7 +13,7 @@ function Products() {
       setProducts(res.data.product)
     }
     getElement();
-  }, [])
+  }, []);
 
   const element = products.map((p) => <ProductsMin
     name={p.name}

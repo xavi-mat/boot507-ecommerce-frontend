@@ -1,45 +1,44 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios"
-import {useParams} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { ProductContext } from '../../context/ProductContext/ProductState'
 
 
 function Product() {
-  const {id} = useParams()
-  const [reviews, setReviews] = useState([])  
-  const {name,price,description,image}= useContext(ProductContext)
+
+  const { id } = useParams()
+  const [reviews, setReviews] = useState([])
+  const { name, price, description, image, cart, addCart } = useContext(ProductContext)
+
   useEffect(() => {
-        async function getReviews() {
+    async function getReviews() {
+      const res = await axios.get("http://localhost:8080/reviews/product/" + id);
+      setReviews(res.data.result)
+    }
+    getReviews();
+  }, [])
 
-            const res = await axios.get("http://localhost:8080/reviews/product/"+id);
-            setReviews(res.data.result)
-            
-        }
-        getReviews();
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
-
-    }, [])
-
-    const review = reviews.map((r) => 
+  const review = reviews.map((r) =>
     <div>
       {r.content} {r.stars}
     </div>
 
-    );
- 
- 
+  );
+
   return (
-    <div> 
-
-        <h2>{name}</h2>
-        <div>{price}</div>
-        <div>{description}</div>
-        <div>{image}</div>
-        <button>{id}</button>
-        <div>
-        {review}
-        </div>
-
+    <div>
+      <h2>{name}</h2>
+      <div>{price}</div>
+      <div>{description}</div>
+      <div>{image}</div>
+      <button onClick={() => addCart(id)}>
+        Add to cart
+      </button>
+      <div>{review}</div>
     </div>
   )
 }
