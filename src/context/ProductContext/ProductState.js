@@ -7,6 +7,7 @@ const initialProductState = {
     description: "",
     image: "",
     id: null,
+    
 }
 
 export const ProductContext = createContext(initialProductState);
