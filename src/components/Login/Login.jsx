@@ -1,20 +1,27 @@
-import { Button, Form, Input } from "antd";
-import { useContext, useEffect, useState } from "react";
+import { Button, Form, Input, notification } from "antd";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
 
 function Login() {
 
-  const { login, message } = useContext(UserContext);
-  const [msg, setMsg] = useState(message);
+  const { login, message, setMessage } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setMsg(message);
-    if (message.startsWith("Welcome")) {
-      setTimeout(() => {
+    if (message) {
+      const notificationType = message.startsWith("Welcome") ? "success" : "error";
+      notification[notificationType]({ message: message });
+      notification[notificationType]({ message: message, placement: "bottom" });
+      notification[notificationType]({ message: message, placement: "top" });
+      notification[notificationType]({ message: message, placement: "topLeft" });
+      notification[notificationType]({ message: message, placement: "bottomRight" });
+      notification[notificationType]({ message: message, placement: "bottomLeft" });
+      if (message.startsWith("Welcome")) {
         navigate("/");
-      }, 500);
+      } else {
+        setMessage("");
+      }
     }
   }, [message]);
 
@@ -28,7 +35,7 @@ function Login() {
 
   return (
     <div className="container">
-    <h1>Login</h1>
+      <h1>Login</h1>
       <Form
         name="basic"
         labelCol={{ span: 8 }}
@@ -62,7 +69,6 @@ function Login() {
           </Button>
         </Form.Item>
       </Form>
-      <div>{msg}</div>
     </div>
   );
 };

@@ -21,7 +21,7 @@ function Cart() {
   const doPayment = () => {
     createOrder(cart);
     clearCart();
-    notification.open({
+    notification.success({
       message: 'Order sent',
       description:
         (<>Your order has been received by our team.<br />It will be soon prepared for delivery.</>),

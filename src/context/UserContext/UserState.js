@@ -28,10 +28,10 @@ export const UserProvider = ({ children }) => {
                 localStorage.setItem("token", JSON.stringify(res.data.token));
             }
         } catch (error) {
-            console.log("ERROR:", error);
+            console.log("FULL ERROR:", error);
             const thereIsMessage = error.response?.data?.message;
+            console.warn("ERROR MESSAGE:", error.response?.data?.message);
             if (thereIsMessage) {
-                console.log(error.response.data.message)
                 dispatch({
                     type: "SET_MESSAGE",
                     payload: error.response.data.message,
