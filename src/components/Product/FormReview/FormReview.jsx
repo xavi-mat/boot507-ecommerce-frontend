@@ -4,27 +4,30 @@ import { Rate } from 'antd';
 import axios from 'axios';
 const { TextArea } = Input;
 
+function FormReview({ id, getReviews }) {
 
-
-
-function FormReview({id}) {
-    
-    const token = JSON.parse(localStorage.getItem("token"));
-    const onFinish = (values) => {
-        values.ProductId=id
-        console.log(values)
-        const res = axios.post("http://localhost:8080/reviews/",
+  const token = JSON.parse(localStorage.getItem("token"));
+  const onFinish = async (values) => {
+    try {
+      values.ProductId = id
+      console.log(values)
+      const res = await axios.post("http://localhost:8080/reviews/",
         values,
-        {headers:{authorization:token}})
-
+        { headers: { authorization: token } })
+      if (res.data) {
+        getReviews();
       }
-    
-      const onFinishFailed = (errorInfo) => {
-        // console.log("Failed:", errorInfo);
-      }  
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const onFinishFailed = (errorInfo) => {
+    // console.log("Failed:", errorInfo);
+  }
   return (
     <div>
-       <Form
+      <Form
         name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
@@ -36,7 +39,6 @@ function FormReview({id}) {
           label="Stars"
           name="stars"
           rules={[
-        
             { required: true, message: "Please select stars" }
           ]}
         >
