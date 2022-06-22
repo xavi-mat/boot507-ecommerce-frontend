@@ -24,7 +24,7 @@ function Cart() {
     notification.open({
       message: 'Order sent',
       description:
-        (<>Your order has been received by our team.<br/>It will be soon prepared for delivery.</>),
+        (<>Your order has been received by our team.<br />It will be soon prepared for delivery.</>),
     });
   }
 
