@@ -26,10 +26,10 @@ function Product() {
   }, [cart]);
 
   let canReview = true;
-  const review = reviews.map((r) => {
+  const review = reviews.map((r,i) => {
     const userIsAuthor = r.UserId === user?.id
     canReview = canReview && !userIsAuthor;
-    return <div style={userIsAuthor ? {"background":"#FFFFAA"} : {}}>{r.content} {r.stars}</div>
+    return <div key={i} style={userIsAuthor ? {"background":"#FFFFAA"} : {}}>{r.content} {r.stars}</div>
   }
   );
 

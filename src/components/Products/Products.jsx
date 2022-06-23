@@ -1,6 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { ProductsContext } from "../../context/ProductsContext/ProductsState";
 import ProductsMin from "./ProductsMin/ProductsMin";
+import { Col, Divider, Row } from 'antd';
+import e from "cors";
+import { Space } from 'antd';
 
 const Products = () => {
   const { getProducts, products } = useContext(ProductsContext);
@@ -21,7 +24,11 @@ const Products = () => {
   return (
     <div>
       <h1>Products</h1>
-      {element}
+
+      <Space size={[8, 16]} wrap>
+        {element}
+      </Space>
+
     </div>
   )
 };
