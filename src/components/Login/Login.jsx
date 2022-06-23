@@ -12,11 +12,6 @@ function Login() {
     if (message) {
       const notificationType = message.startsWith("Welcome") ? "success" : "error";
       notification[notificationType]({ message: message });
-      notification[notificationType]({ message: message, placement: "bottom" });
-      notification[notificationType]({ message: message, placement: "top" });
-      notification[notificationType]({ message: message, placement: "topLeft" });
-      notification[notificationType]({ message: message, placement: "bottomRight" });
-      notification[notificationType]({ message: message, placement: "bottomLeft" });
       if (message.startsWith("Welcome")) {
         navigate("/");
       } else {
