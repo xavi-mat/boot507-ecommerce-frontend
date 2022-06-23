@@ -26,6 +26,13 @@ function Header() {
     [...commonItems, ...loggedInItems] :
     [...commonItems, ...unloggedItems];
 
+  if (user?.role === "admin") {
+    items.push({ label: <Link to="/admin">Admin</Link>, key: 'admin' });
+  }
+  if (["admin", "manager"].includes(user?.role)) {
+    items.push({ label: <Link to="/manager">Manager</Link>, key: 'manager' });
+  }
+
   const onClick = (e) => {
     setCurrent(e.key);
   };

@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
-import { Link } from "react-router-dom";
 import { Col, Row, Typography, Space, Button, Card, Radio } from 'antd';
+import { Link, useNavigate } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
 const API_URL = "http://localhost:8080";
@@ -9,10 +9,20 @@ const API_URL = "http://localhost:8080";
 function Profile() {
 
   const { user, logout, updateUser } = useContext(UserContext);
+
   const [username, setUsername] = useState(user?.username);
   const [firstName, setfirstName] = useState(user?.firstName);
   const [lastName, setlastName] = useState(user?.lastName);
   const [gender, setGender] = useState(user?.gender);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      return navigate("/login");
+    }
+  }, [user]);
+
 
   const logOutUser = () => {
     logout();
@@ -75,6 +85,7 @@ function Profile() {
         </Row>
       </div>
     </>
+
   );
 }
 
