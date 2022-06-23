@@ -5,6 +5,7 @@ import { ProductContext } from '../../context/ProductContext/ProductState'
 import FormReview from './FormReview/FormReview'
 import { UserContext } from '../../context/UserContext/UserState'
 import ProductImage from '../Products/ProductImage/ProductImage'
+import { ProductsContext } from '../../context/ProductsContext/ProductsState'
 
 function Product() {
 
@@ -13,12 +14,18 @@ function Product() {
   const { name, price, description, image, cart, addCart } = useContext(ProductContext)
   const { user } = useContext(UserContext);
 
+  const { getProductById } = useContext(ProductsContext);
+
+
+
   async function getReviews() {
     const res = await axios.get("http://localhost:8080/reviews/product/" + id);
     setReviews(res.data.result)
   };
   useEffect(() => {
     getReviews();
+    const theProd = getProductById(id);
+    console.info(id, theProd);
   }, [])
 
   useEffect(() => {
@@ -29,7 +36,7 @@ function Product() {
   const review = reviews.map((r) => {
     const userIsAuthor = r.UserId === user?.id
     canReview = canReview && !userIsAuthor;
-    return <div style={userIsAuthor ? {"background":"#FFFFAA"} : {}}>{r.content} {r.stars}</div>
+    return <div style={userIsAuthor ? { "background": "#FFFFAA" } : {}}>{r.content} {r.stars}</div>
   }
   );
 

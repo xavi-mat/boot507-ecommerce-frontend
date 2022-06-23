@@ -31,9 +31,12 @@ function App() {
                   <Route path="/register" element={<Register />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/product/:id" element={<Product />} />
+                  {/* <Route path="/premium" element={<Premium />} /> */}
+                  <Route path="/cart" element={<Cart />} />
                   <Route path="/orders" element={<Orders />} />
                   <Route path="/profile" element={<Profile />} />
-                  <Route path="/cart" element={<Cart />} />
+                  {/* <Route path="/manager" element={<Manager />} /> */}
+                  {/* <Route path="/admin" element={<Admin />} /> */}
                 </Routes>
               </BrowserRouter>
             </OrdersProvider>

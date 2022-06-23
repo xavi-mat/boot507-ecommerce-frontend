@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { ProductsContext } from "../../context/ProductsContext/ProductsState";
 import ProductsMin from "./ProductsMin/ProductsMin";
 
@@ -9,7 +9,7 @@ const Products = () => {
     getProducts();
   }, []);
 
-  const element = products.map((p, i) => <ProductsMin
+  const product = products.map((p, i) => <ProductsMin
     key={i}
     name={p.name}
     price={p.price}
@@ -21,7 +21,7 @@ const Products = () => {
   return (
     <div>
       <h1>Products</h1>
-      {element}
+      {product}
     </div>
   )
 };
