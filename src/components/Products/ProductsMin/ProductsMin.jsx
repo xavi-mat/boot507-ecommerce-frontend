@@ -1,19 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ProductContext } from '../../../context/ProductContext/ProductState'
+import { ProductsContext } from '../../../context/ProductsContext/ProductsState';
 import ProductImage from '../ProductImage/ProductImage';
 
 function ProductsMin({ name, price, description, image, id }) {
 
-  const { setProduct, addCart, cart } = useContext(ProductContext)
+  const { addToCart, cart } = useContext(ProductsContext)
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-
-  const handleLinkClick = () => {
-    setProduct({ name, price, description, image, id })
-  }
 
   return (
     <div>
@@ -22,8 +18,8 @@ function ProductsMin({ name, price, description, image, id }) {
       <div>{description}</div>
       <div>{image}</div>
       <ProductImage image={image} />
-      <Link onClick={handleLinkClick} to={"/product/" + id}>Go to product</Link>
-      <button onClick={() => { addCart(id) }}>
+      <Link to={"/product/" + id}>Go to product</Link>
+      <button onClick={() => { addToCart({name,price,description,image,id}) }}>
         Add to cart
       </button>
     </div>

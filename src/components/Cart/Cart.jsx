@@ -1,12 +1,13 @@
-import { useContext, useEffect } from "react";
-import { ProductContext } from "../../context/ProductContext/ProductState";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
 import { Link } from "react-router-dom";
 import { OrdersContext } from "../../context/OrdersContext/OrdersState";
 import { notification } from "antd";
+import { ProductsContext } from "../../context/ProductsContext/ProductsState";
+import CartItem from "./CartItem/CartItem";
 
 function Cart() {
-  const { cart, clearCart } = useContext(ProductContext);
+  const { cart, clearCart } = useContext(ProductsContext);
   const { user } = useContext(UserContext);
   const { createOrder } = useContext(OrdersContext);
 
@@ -28,29 +29,19 @@ function Cart() {
     });
   }
 
-  // TODO: This function will be in ProductContext
-  const getProduct = (productId) => ({
-    name: "TODO", price: "TODO", description: "TODO", price: "TODO"
-  })
+  const cartItem = cart.map((p, i) => {
+    return (
+      <>
+        <CartItem key={i} p={p} />
+        <hr />
+      </>
+    );
+  });
 
-  const cartProduct = cart.map((productId, i) => {
-    const p = getProduct(productId);
-    return <>
-      <div key={i}>
-        <strong>{p.name}</strong> <span>{p.price} €</span>
-        <div>
-          {p.description}
-        </div>
-        {p.image}
-      </div>
-      <hr />
-    </>
-  }
-  );
   return (
     <>
       <h1>My Cart</h1>
-      <div>{cartProduct}</div>
+      <div>{cartItem}</div>
       {user ?
         <button onClick={doPayment}>Pay now</button> :
         <>

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios"
 import { useParams } from 'react-router-dom'
-import { ProductContext } from '../../context/ProductContext/ProductState'
 import FormReview from './FormReview/FormReview'
 import { UserContext } from '../../context/UserContext/UserState'
 import ProductImage from '../Products/ProductImage/ProductImage'
@@ -9,23 +8,28 @@ import { ProductsContext } from '../../context/ProductsContext/ProductsState'
 
 function Product() {
 
-  const { id } = useParams()
-  const [reviews, setReviews] = useState([])
-  const { name, price, description, image, cart, addCart } = useContext(ProductContext)
+  const emptyProduct = {
+    name: "", price: null, description: "", image: ""
+  }
+
+  const { id } = useParams();
+  const [reviews, setReviews] = useState([]);
+  const [prod, setProd] = useState(emptyProduct);
   const { user } = useContext(UserContext);
+  const { cart, addToCart, getProductById } = useContext(ProductsContext);
 
-  const { getProductById } = useContext(ProductsContext);
-
-
-
+  async function getProduct(id) {
+    const theProd = await getProductById(id);
+    setProd(theProd);
+  }
   async function getReviews() {
     const res = await axios.get("http://localhost:8080/reviews/product/" + id);
     setReviews(res.data.result)
   };
+
   useEffect(() => {
+    getProduct(id);
     getReviews();
-    const theProd = getProductById(id);
-    console.info(id, theProd);
   }, [])
 
   useEffect(() => {
@@ -42,12 +46,12 @@ function Product() {
 
   return (
     <div>
-      <h2>{name}</h2>
-      <div>{price}</div>
-      <div>{description}</div>
-      <div>{image}</div>
-      <ProductImage image={image} />
-      <button onClick={() => addCart(id)}>Add to cart</button>
+      <h2>{prod.name}</h2>
+      <div>{prod.price}</div>
+      <div>{prod.description}</div>
+      <div>{prod.image}</div>
+      <ProductImage image={prod.image} />
+      <button onClick={() => addToCart(prod)}>Add to cart</button>
       <div>{
         user && canReview ?
           <FormReview id={id} getReviews={getReviews} />

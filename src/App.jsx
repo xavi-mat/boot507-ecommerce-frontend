@@ -12,7 +12,6 @@ import Profile from "./components/Profile/Profile";
 import Cart from "./components/Cart/Cart";
 
 import { UserProvider } from "./context/UserContext/UserState";
-import { ProductProvider } from "./context/ProductContext/ProductState";
 import { ProductsProvider } from "./context/ProductsContext/ProductsState";
 import { OrdersProvider } from "./context/OrdersContext/OrdersState";
 
@@ -20,28 +19,26 @@ function App() {
   return (
     <>
       <UserProvider>
-        <ProductProvider>
-          <ProductsProvider>
-            <OrdersProvider>
-              <BrowserRouter>
-                <Header />
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/products" element={<Products />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/product/:id" element={<Product />} />
-                  {/* <Route path="/premium" element={<Premium />} /> */}
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/orders" element={<Orders />} />
-                  <Route path="/profile" element={<Profile />} />
-                  {/* <Route path="/manager" element={<Manager />} /> */}
-                  {/* <Route path="/admin" element={<Admin />} /> */}
-                </Routes>
-              </BrowserRouter>
-            </OrdersProvider>
-          </ProductsProvider>
-        </ProductProvider>
+        <ProductsProvider>
+          <OrdersProvider>
+            <BrowserRouter>
+              <Header />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/product/:id" element={<Product />} />
+                {/* <Route path="/premium" element={<Premium />} /> */}
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/profile" element={<Profile />} />
+                {/* <Route path="/manager" element={<Manager />} /> */}
+                {/* <Route path="/admin" element={<Admin />} /> */}
+              </Routes>
+            </BrowserRouter>
+          </OrdersProvider>
+        </ProductsProvider>
       </UserProvider>
     </>
   );
