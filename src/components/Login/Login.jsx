@@ -34,15 +34,16 @@ function Login() {
   }
 
   return (
-    <div className="container">
+    <div style={{ padding: '1rem 3rem' }}>
       <h1>Login</h1>
       <Form
         name="basic"
-        labelCol={{ span: 8 }}
+        labelCol={{ span: 6 }}
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        style={{maxWidth:"600px"}}
       >
         <Form.Item
           label="Email"
