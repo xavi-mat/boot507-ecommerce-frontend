@@ -43,10 +43,10 @@ export const OrdersProvider = ({ children }) => {
       );
       const OrderId = res.data.OrderId;
 
-      cart.forEach(async ProductId => {
+      cart.forEach(async product => {
         await axios.post(
           API_URL + "/orders/product/",
-          { OrderId, ProductId, quantity: 1 },
+          { OrderId, ProductId: product.id, quantity: product.quantity },
           { headers: { authorization: token } }
         );
       });

@@ -5,10 +5,15 @@ const products = (state, action) => {
                 ...state,
                 products: action.payload,
             };
-        case "ADD_CART":
+        case "ADD_TO_CART":
             return {
                 ...state,
                 cart: [action.payload, ...state.cart]
+            }
+        case "RENEW_CART":
+            return {
+                ...state,
+                cart: action.payload,
             }
         case "CLEAR_CART":
             return {

@@ -40,10 +40,28 @@ export const ProductsProvider = ({ children }) => {
     }
 
     const addToCart = (product) => {
-        dispatch({
-            type: "ADD_CART",
-            payload: product
-        });
+        // Check if product exists in cart
+        const prodInCart = state.cart.find(p => p.id === product.id);
+        if (prodInCart) {
+            // If it exists, add 1 to quantity
+            const newCart = state.cart.map(p=>{
+                if (p.id === product.id) {
+                    p.quantity++
+                }
+                return p;
+            });
+            dispatch({
+                type: "RENEW_CART",
+                payload: newCart
+            })
+        } else {
+            // If not, add to cart
+            product.quantity = 1;
+            dispatch({
+                type: "ADD_TO_CART",
+                payload: product
+            });
+        }
     };
 
     const clearCart = () => {

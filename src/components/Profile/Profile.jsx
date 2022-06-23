@@ -40,52 +40,49 @@ function Profile() {
   // console.info("USUARIO:", user)
 
   return (
-    <>
-      <div style={{ padding: '1rem 3rem' }}>
-        <Title>My Profile</Title>
-        <Row>
-          <Col span={8}>
-            <img src={API_URL + "/users/avatar/" + user?.avatar} style={{ width: "100%" }} />
-          </Col>
-          <Col span={16} style={{ padding: '0 1rem' }}>
-            <Card style={{ marginBottom: '1rem' }}>
-              <div>
-                <Space align="baseline">
-                  <div>Username:</div>
-                  <div><Title level={4} editable={{ onChange: setUsername }}>
-                    {username}
-                  </Title>
-                  </div>
-                </Space>
-              </div>
-              <div>
-                <Space align="baseline">
-                  <div>First Name:</div>
-                  <Paragraph editable={{ onChange: setfirstName }} style={{ fontWeight: "bold" }}>{firstName}</Paragraph>
-                  <div>Last Name:</div>
-                  <Paragraph editable={{ onChange: setlastName }} style={{ fontWeight: "bold" }}>{lastName}</Paragraph>
-                </Space>
-              </div>
-              <div>
-                <span>Gender: </span>
-                <Radio.Group defaultValue={gender} buttonStyle="solid" onChange={handleSetGender}>
-                  <Radio.Button value={null}>-</Radio.Button>
-                  <Radio.Button value="F">F</Radio.Button>
-                  <Radio.Button value="M">M</Radio.Button>
-                </Radio.Group>
-                <div>Email: <strong>{user?.email}</strong></div>
-                <div>Role: <strong>{user?.role}</strong></div>
-              </div>
-              <Button onClick={handleUpdateUser}>Update</Button>
-            </Card>
-            <Button>
-              <Link onClick={logOutUser} to={"/"}>Log Out</Link>
-            </Button>
-          </Col>
-        </Row>
-      </div>
-    </>
-
+    <div style={{ padding: '1rem 3rem' }}>
+      <Title>My Profile</Title>
+      <Row>
+        <Col span={8}>
+          <img src={API_URL + "/users/avatar/" + user?.avatar} style={{ width: "100%" }} />
+        </Col>
+        <Col span={16} style={{ padding: '0 1rem' }}>
+          <Card style={{ marginBottom: '1rem' }}>
+            <div>
+              <Space align="baseline">
+                <div>Username:</div>
+                <div><Title level={4} editable={{ onChange: setUsername }}>
+                  {username}
+                </Title>
+                </div>
+              </Space>
+            </div>
+            <div>
+              <Space align="baseline">
+                <div>First Name:</div>
+                <Paragraph editable={{ onChange: setfirstName }} style={{ fontWeight: "bold" }}>{firstName}</Paragraph>
+                <div>Last Name:</div>
+                <Paragraph editable={{ onChange: setlastName }} style={{ fontWeight: "bold" }}>{lastName}</Paragraph>
+              </Space>
+            </div>
+            <div>
+              <span>Gender: </span>
+              <Radio.Group defaultValue={gender} buttonStyle="solid" onChange={handleSetGender}>
+                <Radio.Button value={null}>-</Radio.Button>
+                <Radio.Button value="F">F</Radio.Button>
+                <Radio.Button value="M">M</Radio.Button>
+              </Radio.Group>
+              <div>Email: <strong>{user?.email}</strong></div>
+              <div>Role: <strong>{user?.role}</strong></div>
+            </div>
+            <Button onClick={handleUpdateUser}>Update</Button>
+          </Card>
+          <Button>
+            <Link onClick={logOutUser} to={"/"}>Log Out</Link>
+          </Button>
+        </Col>
+      </Row>
+    </div>
   );
 }
 
