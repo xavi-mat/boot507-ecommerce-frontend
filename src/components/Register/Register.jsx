@@ -37,7 +37,7 @@ function Register() {
   }
 
   return (
-    <div className="container">
+    <div style={{ padding: '1rem 3rem' }}>
       <h1>Register</h1>
       <Form
         name="basic"
@@ -47,6 +47,7 @@ function Register() {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
+        style={{maxWidth:"600px"}}
       >
         <Form.Item
           label="Username"
