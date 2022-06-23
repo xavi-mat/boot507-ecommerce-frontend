@@ -2,6 +2,9 @@ import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ProductsContext } from '../../../context/ProductsContext/ProductsState';
 import ProductImage from '../ProductImage/ProductImage';
+import { Card } from 'antd';
+const { Meta } = Card;
+
 
 function ProductsMin({ name, price, description, image, id }) {
 
@@ -12,17 +15,24 @@ function ProductsMin({ name, price, description, image, id }) {
   }, [cart]);
 
   return (
-    <div>
-      <div>{name}</div>
-      <div>{price}</div>
-      <div>{description}</div>
-      <div>{image}</div>
-      <ProductImage image={image} />
-      <Link to={"/product/" + id}>Go to product</Link>
-      <button onClick={() => { addToCart({name,price,description,image,id}) }}>
-        Add to cart
-      </button>
-    </div>
+    <Link to={"/product/" + id}>
+      <div>
+        <Card
+          hoverable
+          style={{
+            width: 240,
+            height:480
+          }}
+          cover={<ProductImage image={image}/>}
+        >
+          <Meta title={name} price={price} description={description} />
+          <br />
+          <button onClick={() => { addToCart({name,price,description,image,id}) }}>
+            Add to cart
+          </button>
+        </Card>
+      </div>
+    </Link>
   )
 }
 
