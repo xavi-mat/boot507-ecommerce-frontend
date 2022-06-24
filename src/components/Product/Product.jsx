@@ -5,6 +5,7 @@ import FormReview from './FormReview/FormReview'
 import { UserContext } from '../../context/UserContext/UserState'
 import ProductImage from '../Products/ProductImage/ProductImage'
 import { ProductsContext } from '../../context/ProductsContext/ProductsState'
+import { Rate } from 'antd'
 
 function Product() {
 
@@ -37,12 +38,21 @@ function Product() {
   }, [cart]);
 
   let canReview = true;
-  const review = reviews.map((r,i) => {
+  let stars = { total: 0, count: 0, average: -1 }
+  const review = reviews.map((r, i) => {
     const userIsAuthor = r.UserId === user?.id
     canReview = canReview && !userIsAuthor;
-    return <div key={i} style={userIsAuthor ? { "background": "#FFFFAA" } : {}}>{r.content} {r.stars}</div>
+    stars.count++;
+    stars.total += r.stars;
+    return (<div key={i} style={userIsAuthor ? { "background": "#FFFFAA" } : {}}>
+      {r.content} {r.stars} <Rate disabled allowHalf defaultValue={r.stars} />
+    </div>)
   }
   );
+
+  if (stars.count) {
+    stars.average = stars.total / stars.count;
+  }
 
   return (
     <div>
@@ -50,13 +60,22 @@ function Product() {
       <div>{prod.price}</div>
       <div>{prod.description}</div>
       <div>{prod.image}</div>
-      <ProductImage image={prod.image} />
-      <button onClick={() => addToCart(prod)}>Add to cart</button>
-      <div>{
-        user && canReview ?
-          <FormReview id={id} getReviews={getReviews} />
-          : null
-      }</div>
+      <div>
+        <ProductImage image={prod.image} />
+      </div>
+      <div>
+        <button onClick={() => addToCart(prod)}>Add to cart</button>
+      </div>
+      <div>
+        <h2>Customer reviews</h2>
+        <div>
+          {stars.average > -1 ? <Rate disabled allowHalf defaultValue={stars.average} /> : null}
+        </div>
+        {
+          user && canReview ?
+            <FormReview id={id} getReviews={getReviews} />
+            : null
+        }</div>
       <div>{review}</div>
     </div>
   );
