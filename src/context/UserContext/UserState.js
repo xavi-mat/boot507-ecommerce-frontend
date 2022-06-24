@@ -1,6 +1,7 @@
 import { createContext, useReducer } from "react";
 import axios from "axios";
 import UserReducer from "./UserReducer";
+import { DislikeTwoTone } from "@ant-design/icons";
 
 const token = JSON.parse(localStorage.getItem("token"));
 
@@ -27,6 +28,30 @@ export const UserProvider = ({ children }) => {
             if (res.data) {
                 localStorage.setItem("token", JSON.stringify(res.data.token));
             }
+        } catch (error) {
+            console.log("FULL ERROR:", error);
+            const thereIsMessage = error.response?.data?.message;
+            console.warn("ERROR MESSAGE:", error.response?.data?.message);
+            if (thereIsMessage) {
+                dispatch({
+                    type: "SET_MESSAGE",
+                    payload: error.response.data.message,
+                })
+            } else {
+                throw error;
+            }
+        }
+    };
+
+    const getUserInfo = async () => {
+        try {
+            const res = await axios.get(API_URL + "/users/me",
+                { headers: { Authorization: state.token } }
+            );
+            dispatch({
+                type: "SET_USER",
+                payload: res.data.user,
+            });
         } catch (error) {
             console.log("FULL ERROR:", error);
             const thereIsMessage = error.response?.data?.message;
@@ -79,7 +104,8 @@ export const UserProvider = ({ children }) => {
                 login,
                 setMessage,
                 logout,
-                updateUser
+                updateUser,
+                getUserInfo,
             }}
         >
             {children}

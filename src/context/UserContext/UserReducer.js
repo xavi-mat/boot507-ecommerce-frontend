@@ -18,7 +18,12 @@ const users = (state, action) => {
                 ...state,
                 user: null,
                 token: null,
-                message:"",
+                message: "",
+            };
+        case "SET_USER":
+            return {
+                ...state,
+                user: action.payload,
             };
         default:
             return state;

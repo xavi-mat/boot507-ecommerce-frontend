@@ -1,13 +1,20 @@
 import { Menu } from "antd";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
 import { CrownOutlined, HomeOutlined, LockOutlined, LoginOutlined, SettingOutlined, ShopOutlined, ShoppingCartOutlined, SolutionOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons';
 
 function Header() {
 
-  const { user } = useContext(UserContext);
+  const { user, getUserInfo } = useContext(UserContext);
   const [current, setCurrent] = useState('home');
+
+  useEffect(() => {
+    console.log("USER!!!", user)
+    if (!user) {
+      getUserInfo();
+    }
+  }, [user]);
 
   const commonItems = [
     { label: <Link to="/">Home</Link>, key: 'home', icon: <HomeOutlined /> },

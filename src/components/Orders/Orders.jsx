@@ -8,9 +8,11 @@ function Orders() {
     useEffect(() => {
         getOrders();
     }, []);
+
     const order = orders.map((o, i) =>
         <Order key={i} order={o} />
     )
+
     return (
         <>
             <h1>My Orders</h1>
