@@ -29,23 +29,23 @@ function FormReview({ id, getReviews }) {
     <div>
       <Form
         name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 20 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
         <Form.Item
-          label="Stars"
+          label="Select stars"
           name="stars"
           rules={[
             { required: true, message: "Please select stars" }
           ]}
         >
-          <Rate allowHalf defaultValue={2.5} />
+          <Rate defaultValue={1} />
         </Form.Item>
 
-        <Form.Item label="Comment"
+        <Form.Item label="Write a comment"
           name="content"
           rules={[{ required: true, message: "Please comment product" }]}
         >

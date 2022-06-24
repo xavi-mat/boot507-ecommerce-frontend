@@ -5,7 +5,8 @@ import FormReview from './FormReview/FormReview'
 import { UserContext } from '../../context/UserContext/UserState'
 import ProductImage from '../Products/ProductImage/ProductImage'
 import { ProductsContext } from '../../context/ProductsContext/ProductsState'
-import { Rate } from 'antd'
+import { Button, Card, Col, Descriptions, Rate, Row } from 'antd'
+import Review from './FormReview/Review/Review'
 
 function Product() {
 
@@ -44,9 +45,7 @@ function Product() {
     canReview = canReview && !userIsAuthor;
     stars.count++;
     stars.total += r.stars;
-    return (<div key={i} style={userIsAuthor ? { "background": "#FFFFAA" } : {}}>
-      {r.content} {r.stars} <Rate disabled allowHalf defaultValue={r.stars} />
-    </div>)
+    return (<Review key={i} review={r} userIsAuthor={userIsAuthor} />)
   }
   );
 
@@ -55,28 +54,39 @@ function Product() {
   }
 
   return (
-    <div>
-      <h2>{prod.name}</h2>
-      <div>{prod.price}</div>
-      <div>{prod.description}</div>
-      <div>{prod.image}</div>
-      <div>
-        <ProductImage image={prod.image} />
-      </div>
-      <div>
-        <button onClick={() => addToCart(prod)}>Add to cart</button>
-      </div>
-      <div>
-        <h2>Customer reviews</h2>
-        <div>
-          {stars.average > -1 ? <Rate disabled allowHalf defaultValue={stars.average} /> : null}
-        </div>
-        {
-          user && canReview ?
-            <FormReview id={id} getReviews={getReviews} />
-            : null
-        }</div>
-      <div>{review}</div>
+    <div style={{ padding: "0 2rem" }}>
+      <Row>
+        <Col sm={10}>
+          <ProductImage image={prod.image} width="100%" />
+        </Col>
+        <Col sm={14}>
+          <Descriptions
+            title={prod.name}
+            column={{ xxl: 4, xl: 3, lg: 3, md: 2, sm: 1, xs: 1 }}
+            bordered
+          >
+            <Descriptions.Item>{prod.price} €</Descriptions.Item>
+            <Descriptions.Item>
+              {stars.average > -1 ? <Rate disabled allowHalf defaultValue={stars.average} /> : "No valorations yet"}
+            </Descriptions.Item>
+            <Descriptions.Item>
+              <Button type='primary' onClick={() => addToCart(prod)}>Add to cart</Button>
+            </Descriptions.Item>
+          </Descriptions>
+          <Descriptions bordered>
+            <Descriptions.Item>{prod.description}</Descriptions.Item>
+          </Descriptions>
+          <div style={{marginTop:"2rem"}}>
+            <h2>Customer reviews</h2>
+            <div>
+              {user && canReview ?
+                <FormReview id={id} getReviews={getReviews} />
+                : null}
+            </div>
+          </div>
+          <div>{review}</div>
+        </Col>
+      </Row>
     </div>
   );
 };

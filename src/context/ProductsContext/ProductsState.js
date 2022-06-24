@@ -32,6 +32,7 @@ export const ProductsProvider = ({ children }) => {
             if (!product) {
                 const res = await axios.get(API_URL + "/products/id/" + id);
                 product = res.data.product;
+                product.description = (product.description + " ").repeat(10);
             }
             return product
         } catch (error) {
