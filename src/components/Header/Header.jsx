@@ -10,7 +10,6 @@ function Header() {
   const [current, setCurrent] = useState('home');
 
   useEffect(() => {
-    console.log("USER!!!", user)
     if (!user) {
       getUserInfo();
     }
