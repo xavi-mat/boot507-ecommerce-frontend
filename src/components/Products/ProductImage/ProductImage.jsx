@@ -4,7 +4,7 @@ function ProductImage({ image, width="150px" }) {
   if (image) {
     const src = API_URL + "/products/image/" + image
     return (
-      <img src={src} width={width} style={{ marginRight: "1rem" }} />
+      <img src={src} width={width} style={{ marginRight: "1rem" }} alt="" />
     )
   } else {
     return (

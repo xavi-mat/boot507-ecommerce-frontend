@@ -5,7 +5,7 @@ import FormReview from './FormReview/FormReview'
 import { UserContext } from '../../context/UserContext/UserState'
 import ProductImage from '../Products/ProductImage/ProductImage'
 import { ProductsContext } from '../../context/ProductsContext/ProductsState'
-import { Button, Card, Col, Descriptions, Rate, Row } from 'antd'
+import { Button, Col, Descriptions, Rate, Row } from 'antd'
 import Review from './FormReview/Review/Review'
 
 function Product() {

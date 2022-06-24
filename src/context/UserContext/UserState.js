@@ -1,7 +1,6 @@
 import { createContext, useReducer } from "react";
 import axios from "axios";
 import UserReducer from "./UserReducer";
-import { DislikeTwoTone } from "@ant-design/icons";
 
 const token = JSON.parse(localStorage.getItem("token"));
 
