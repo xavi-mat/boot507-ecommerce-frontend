@@ -10,11 +10,12 @@ import Product from "./components/Product/Product";
 import Orders from "./components/Orders/Orders";
 import Profile from "./components/Profile/Profile";
 import Cart from "./components/Cart/Cart";
+import Premium from "./components/Premium/Premium";
+import Manager from "./components/Manager/Manager";
 
 import { UserProvider } from "./context/UserContext/UserState";
 import { ProductsProvider } from "./context/ProductsContext/ProductsState";
 import { OrdersProvider } from "./context/OrdersContext/OrdersState";
-import Premium from "./components/Premium/Premium";
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/profile" element={<Profile />} />
-                {/* <Route path="/manager" element={<Manager />} /> */}
+                <Route path="/manager" element={<Manager   />} />
                 {/* <Route path="/admin" element={<Admin />} /> */}
               </Routes>
             </BrowserRouter>
