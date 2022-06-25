@@ -1,12 +1,19 @@
 import { Button, Form, Input, notification } from "antd";
 import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
 
 function Login() {
 
   const { login, message, setMessage } = useContext(UserContext);
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get('confirmed') === "true") {
+      notification.info({message:"Email confirmed", description:"Please, try to log in."})
+    }
+  }, [])
 
   useEffect(() => {
     if (message) {

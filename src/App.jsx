@@ -14,6 +14,7 @@ import Cart from "./components/Cart/Cart";
 import { UserProvider } from "./context/UserContext/UserState";
 import { ProductsProvider } from "./context/ProductsContext/ProductsState";
 import { OrdersProvider } from "./context/OrdersContext/OrdersState";
+import Premium from "./components/Premium/Premium";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/product/:id" element={<Product />} />
-                {/* <Route path="/premium" element={<Premium />} /> */}
+                <Route path="/premium" element={<Premium  />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/profile" element={<Profile />} />

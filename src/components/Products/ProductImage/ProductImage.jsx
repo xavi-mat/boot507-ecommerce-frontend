@@ -1,6 +1,6 @@
 const API_URL = "http://localhost:8080";
 
-function ProductImage({ image, width="150px" }) {
+function ProductImage({ image, width="240px" }) {
   if (image) {
     const src = API_URL + "/products/image/" + image
     return (
@@ -9,7 +9,7 @@ function ProductImage({ image, width="150px" }) {
   } else {
     return (
       <div style={{
-        width: "150px", height: "150px",
+        width: "240px", height: "240px",
         backgroundColor: "#BBBBBB", marginRight: "1rem"
       }} >
       </div>

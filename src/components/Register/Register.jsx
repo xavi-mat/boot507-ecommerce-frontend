@@ -15,7 +15,7 @@ function Register() {
             message={res.data.message}
             type="success"
             showIcon
-            action={<a href={res.data.url} target="_blank" rel="noreferrer">CLICK HERE</a>}
+            action={<a href={res.data.url}>CLICK HERE TO CONFIRM</a>}
           />)
         } else {
           setAlert(<Alert message="REGISTER ERROR. PLEASE TRY AGAIN" type="error" showIcon />)

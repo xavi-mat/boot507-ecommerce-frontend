@@ -22,7 +22,7 @@ function Cart() {
   }, [cart])
 
   if (cart.length < 1) {
-    return (<><h1>My Cart</h1><div>Your cart is empty.</div></>)
+    return (<div style={{margin:"2rem"}}><h1>My Cart</h1><div>Your cart is empty.</div></div>)
   }
 
   const doPayment = () => {

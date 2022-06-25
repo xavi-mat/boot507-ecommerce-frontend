@@ -1,6 +1,7 @@
 import { createContext, useReducer } from "react";
 import axios from "axios";
 import ProductsReducer from "./ProductsReducer"
+import { notification } from "antd";
 
 const cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -32,7 +33,6 @@ export const ProductsProvider = ({ children }) => {
             if (!product) {
                 const res = await axios.get(API_URL + "/products/id/" + id);
                 product = res.data.product;
-                product.description = (product.description + " ").repeat(10);
             }
             return product
         } catch (error) {
@@ -45,7 +45,7 @@ export const ProductsProvider = ({ children }) => {
         const prodInCart = state.cart.find(p => p.id === product.id);
         if (prodInCart) {
             // If it exists, add 1 to quantity
-            const newCart = state.cart.map(p=>{
+            const newCart = state.cart.map(p => {
                 if (p.id === product.id) {
                     p.quantity++
                 }
@@ -63,6 +63,7 @@ export const ProductsProvider = ({ children }) => {
                 payload: product
             });
         }
+        notification.success({ message: "Added to cart", description: product.name });
     };
 
     const clearCart = () => {

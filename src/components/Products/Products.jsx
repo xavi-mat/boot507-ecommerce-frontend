@@ -21,9 +21,9 @@ const Products = () => {
   );
 
   return (
-    <div>
+    <div style={{ margin: "1rem 3rem" }}>
       <h1>Products</h1>
-      <Space size={[8, 16]} wrap>
+      <Space size={[24, 24]} wrap>
         {product}
       </Space>
     </div>

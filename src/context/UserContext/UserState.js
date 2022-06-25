@@ -43,6 +43,7 @@ export const UserProvider = ({ children }) => {
     };
 
     const getUserInfo = async () => {
+        if (!state.token) return;
         try {
             const res = await axios.get(API_URL + "/users/me",
                 { headers: { Authorization: state.token } }
