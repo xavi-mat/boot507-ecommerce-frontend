@@ -30,11 +30,11 @@ export const UserProvider = ({ children }) => {
         } catch (error) {
             console.log("FULL ERROR:", error);
             const thereIsMessage = error.response?.data?.message;
-            console.warn("ERROR MESSAGE:", error.response?.data?.message);
+            console.warn("ERROR MESSAGE:", thereIsMessage);
             if (thereIsMessage) {
                 dispatch({
                     type: "SET_MESSAGE",
-                    payload: error.response.data.message,
+                    payload: thereIsMessage,
                 })
             } else {
                 throw error;
@@ -54,11 +54,11 @@ export const UserProvider = ({ children }) => {
         } catch (error) {
             console.log("FULL ERROR:", error);
             const thereIsMessage = error.response?.data?.message;
-            console.warn("ERROR MESSAGE:", error.response?.data?.message);
+            console.warn("ERROR MESSAGE:", thereIsMessage);
             if (thereIsMessage) {
                 dispatch({
                     type: "SET_MESSAGE",
-                    payload: error.response.data.message,
+                    payload: thereIsMessage,
                 })
             } else {
                 throw error;
