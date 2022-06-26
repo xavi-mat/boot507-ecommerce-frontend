@@ -10,14 +10,16 @@ const Products = () => {
     getProducts();
   }, []);
 
-  const product = products.map((p, i) => <ProductsMin
-    key={i}
-    name={p.name}
-    price={p.price}
-    description={p.description}
-    image={p.image}
-    id={p.id} />
-  );
+  const product = products
+    .filter(p => p.active)  // Only active products will be seen
+    .map((p, i) => <ProductsMin
+      key={i}
+      name={p.name}
+      price={p.price}
+      description={p.description}
+      image={p.image}
+      id={p.id} />
+    );
 
   return (
     <div style={{ margin: "1rem 3rem" }}>

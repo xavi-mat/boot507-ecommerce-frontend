@@ -5,7 +5,7 @@ function Order({ order }) {
 
   const data = order.Details.map((d, i) => ({
     key: i,
-    name: d.Product.name,
+    name: d.Product?.name,
     quantity: d.quantity,
     price: d.price + " €",
     subtotal: d.price * d.quantity + " €",
