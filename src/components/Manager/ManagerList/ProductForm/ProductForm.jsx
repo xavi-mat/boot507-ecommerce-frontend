@@ -11,7 +11,7 @@ function ProductForm({ name, price, description, image, id, putInForm }) {
       if (values.id) {
         console.log("UPDATE:", values)
       } else {
-        const res = await axios.post
+        // const res = await axios.post
         console.log("NEW:", values);
       }
     } catch (error) {
