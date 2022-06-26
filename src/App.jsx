@@ -35,7 +35,7 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/manager" element={<Manager   />} />
+                <Route path="/manager" element={<Manager />} />
                 {/* <Route path="/admin" element={<Admin />} /> */}
               </Routes>
             </BrowserRouter>

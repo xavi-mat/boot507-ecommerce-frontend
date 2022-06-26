@@ -1,23 +1,49 @@
-import { useContext, useEffect } from "react";
-import { Space } from 'antd';
+import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
 import ManagerProductMin from "./ManagerProductMin/ManagerProductMin";
 import ProductForm from "./ProductForm/ProductForm";
 
 const ManagerList = () => {
+
   const { getProducts, products } = useContext(ProductsContext);
+  const [productInForm, setProductInForm] = useState(undefined);
 
   useEffect(() => {
     getProducts();
   }, []);
 
-  const product = products.map((p, i) => <ManagerProductMin
-    key={i}
-    name={p.name}
-    price={p.price}
-    description={p.description}
-    image={p.image}
-    id={p.id} />
+  const putInForm = (id) => {
+    setProductInForm(id);
+  }
+
+  const product = products.map((p, i) => {
+
+    if (p.id === productInForm) {
+      return (
+        <ProductForm
+          key={i}
+          name={p.name}
+          price={p.price}
+          description={p.description}
+          image={p.image}
+          id={p.id}
+          putInForm={putInForm}
+        />
+      );
+    } else {
+      return (
+        <ManagerProductMin
+          key={i}
+          name={p.name}
+          price={p.price}
+          description={p.description}
+          image={p.image}
+          id={p.id}
+          putInForm={putInForm}
+        />
+      );
+    }
+  }
   );
 
   return (
