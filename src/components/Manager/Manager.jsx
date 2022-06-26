@@ -9,6 +9,7 @@ function Manager() {
   const { user } = useContext(UserContext);
 
   if (!(["admin", "manager"].includes(user?.role))) {
+    // TODO: Do this check using React Guards
     return (
       <div style={{ margin: "1rem 2rem" }}>
         <Title>Manager</Title>

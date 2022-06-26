@@ -1,3 +1,4 @@
+import { List } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
 import ManagerProductMin from "./ManagerProductMin/ManagerProductMin";
@@ -27,6 +28,7 @@ const ManagerList = () => {
           description={p.description}
           image={p.image}
           id={p.id}
+          active={p.active}
           putInForm={putInForm}
         />
       );
@@ -39,6 +41,7 @@ const ManagerList = () => {
           description={p.description}
           image={p.image}
           id={p.id}
+          active={p.active}
           putInForm={putInForm}
         />
       );
@@ -50,7 +53,13 @@ const ManagerList = () => {
     <div style={{ margin: "1rem 3rem" }}>
       <h1>Products</h1>
       <div><ProductForm /></div>
-      <div>{product}</div>
+      <List
+        dataSource={product}
+        renderItem={p => (
+          <List.Item>{p}</List.Item>
+        )}
+        pagination={{ defaultPageSize: 5, position: "both" }}
+      />
     </div>
   )
 };

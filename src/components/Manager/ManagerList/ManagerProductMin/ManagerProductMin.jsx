@@ -1,12 +1,13 @@
-import { Card, Space, Button, Row, Col, Popconfirm, notification } from 'antd';
+import { Card, Space, Button, Row, Col, Popconfirm, notification, Checkbox } from 'antd';
 import ProductImage from '../../../Products/ProductImage/ProductImage';
 import axios from "axios";
 import { useContext } from 'react';
 import { ProductsContext } from '../../../../context/ProductsContext/ProductsState';
+import { CheckSquareTwoTone, CloseSquareOutlined, CloseSquareTwoTone } from '@ant-design/icons';
 
 const API_URL = "http://localhost:8080";
 
-function ManagerProductMin({ name, price, description, image, id, putInForm }) {
+function ManagerProductMin({ name, price, description, image, active, id, putInForm }) {
 
   const token = JSON.parse(localStorage.getItem("token"));
   const { getProducts } = useContext(ProductsContext);
@@ -31,7 +32,7 @@ function ManagerProductMin({ name, price, description, image, id, putInForm }) {
   })
 
   return (
-    <Card hoverable>
+    <Card hoverable style={{width:"100%"}}>
       <Row>
         <Col lg={4}>
           <div style={{ maxWidth: "150px", maxHeight: "150px", overflow: "hidden" }}>
@@ -42,7 +43,17 @@ function ManagerProductMin({ name, price, description, image, id, putInForm }) {
           <div style={{ marginLeft: "1rem" }}>
             <h2>#{id}. {name}</h2>
             <div>{description}</div>
-            <h3>{price} €</h3>
+            <div>
+              <Space size="large" align='baseline'>
+                <h3>{price ? price + " €" : "PRICE NOT DEFINED"}</h3>
+                <h3>
+                  {active ?
+                    <><CheckSquareTwoTone twoToneColor="#00BB00" /> Active</> :
+                    <><CloseSquareTwoTone twoToneColor="#FF0000" /> Inactive</>
+                  }
+                </h3>
+              </Space>
+            </div>
             <Space size="large">
               <Button type='primary' onClick={handleEdit}>Edit Product</Button>
               <Popconfirm
