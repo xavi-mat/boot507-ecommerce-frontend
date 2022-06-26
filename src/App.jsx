@@ -12,6 +12,7 @@ import Profile from "./components/Profile/Profile";
 import Cart from "./components/Cart/Cart";
 import Premium from "./components/Premium/Premium";
 import Manager from "./components/Manager/Manager";
+import Footer from "./components/Footer/Footer";
 
 import { UserProvider } from "./context/UserContext/UserState";
 import { ProductsProvider } from "./context/ProductsContext/ProductsState";
@@ -38,10 +39,12 @@ function App() {
                 <Route path="/manager" element={<Manager />} />
                 {/* <Route path="/admin" element={<Admin />} /> */}
               </Routes>
+              <Footer />
             </BrowserRouter>
           </OrdersProvider>
         </ProductsProvider>
       </UserProvider>
+      
     </>
   );
 }
