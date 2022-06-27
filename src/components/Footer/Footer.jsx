@@ -13,7 +13,7 @@ function Footer() {
           width: '100%',
         }}
       >
-        SoulWear - © 2018 by Imanol & Xavi
+        SoulWear - © 2022 by Imanol & Xavi
       </footer>
     </>
   )
