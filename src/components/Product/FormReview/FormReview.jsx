@@ -10,7 +10,6 @@ function FormReview({ id, getReviews }) {
   const onFinish = async (values) => {
     try {
       values.ProductId = id
-      console.log(values)
       const res = await axios.post("http://localhost:8080/reviews/",
         values,
         { headers: { authorization: token } })
@@ -31,7 +30,7 @@ function FormReview({ id, getReviews }) {
         name="basic"
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 20 }}
-        initialValues={{ remember: true }}
+        initialValues={{ remember: true, stars: 1 }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
@@ -42,14 +41,14 @@ function FormReview({ id, getReviews }) {
             { required: true, message: "Please select stars" }
           ]}
         >
-          <Rate defaultValue={1} />
+          <Rate />
         </Form.Item>
 
         <Form.Item label="Write a comment"
           name="content"
           rules={[{ required: true, message: "Please comment product" }]}
         >
-          <TextArea rows={4} />
+          <TextArea rows={4} showCount maxLength={254} />
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

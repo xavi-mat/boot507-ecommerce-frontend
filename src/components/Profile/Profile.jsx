@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
 import { Col, Row, Typography, Space, Button, Card, Radio } from 'antd';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
 const API_URL = "http://localhost:8080";
@@ -9,20 +9,22 @@ const API_URL = "http://localhost:8080";
 function Profile() {
 
   const { user, logout, updateUser } = useContext(UserContext);
-
   const [username, setUsername] = useState(user?.username);
   const [firstName, setfirstName] = useState(user?.firstName);
   const [lastName, setlastName] = useState(user?.lastName);
   const [gender, setGender] = useState(user?.gender);
+  const token = JSON.parse(localStorage.getItem("token"));
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!user) {
-      return navigate("/login");
-    }
-  }, [user]);
-
+  if (!token) {
+    // TODO: Do this check using React Guards
+    return (
+      <div style={{ margin: "1rem 2rem" }}>
+        <Title>My Profile</Title>
+        <h2>Unauthorized</h2>
+        <h3>Log-in needed to see this page.</h3>
+      </div>
+    )
+  }
 
   const logOutUser = () => {
     logout();
@@ -37,10 +39,8 @@ function Profile() {
     updateUser(updatedUser);
   }
 
-  // console.info("USUARIO:", user)
-
   return (
-    <div style={{ padding: '1rem 3rem' }}>
+    <div style={{ margin: '1rem 2rem' }}>
       <Title>My Profile</Title>
       <Row>
         <Col span={8}>

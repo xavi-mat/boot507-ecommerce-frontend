@@ -16,6 +16,7 @@ import Manager from "./components/Manager/Manager";
 import { UserProvider } from "./context/UserContext/UserState";
 import { ProductsProvider } from "./context/ProductsContext/ProductsState";
 import { OrdersProvider } from "./context/OrdersContext/OrdersState";
+import AdminView from "./components/AdminView/AdminView";
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/manager" element={<Manager />} />
-                {/* <Route path="/admin" element={<Admin />} /> */}
+                <Route path="/admin" element={<AdminView />} />
               </Routes>
             </BrowserRouter>
           </OrdersProvider>
