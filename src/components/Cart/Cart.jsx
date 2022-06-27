@@ -23,14 +23,14 @@ function Cart() {
   }, [cart])
 
   if (cart.length < 1) {
-    return (<div style={{ margin: "2rem" }}><h1>My Cart</h1>
+    return (<div className="cart-contain"><h1>My Cart</h1>
       <div>
         <Row>
           <Col span={6}></Col>
           
           <Col span={12}>
             <div className="site-card-border-less-wrapper">
-              <Card title="Your cart it's empty rigth now" bordered={true} style={{ width: 400 }}>
+              <Card title="Your cart it's empty rigth now" bordered={true} className="card-cart" >
                 <p>Please go to products and buy.</p>
 
               </Card>
@@ -63,7 +63,7 @@ function Cart() {
   });
 
   return (
-    <Row style={{ marginBottom: "2rem" }}>
+    <Row className="cart-item" >
       <Col xs={0} sm={2} md={4} lg={6} xl={7}>
       </Col>
       <Col xs={24} sm={20} md={16} lg={12} xl={10}>
