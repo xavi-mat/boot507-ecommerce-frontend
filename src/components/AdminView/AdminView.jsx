@@ -11,7 +11,7 @@ function AdminView() {
   if (!(["admin"].includes(user?.role))) {
     // TODO: Do this check using React Guards
     return (
-      <div style={{ margin: "1rem 2rem" }}>
+      <div className="main-container">
         <Title>Admin Control Panel</Title>
         <h2>Unauthorized</h2>
         <h3>Not enough permissions to access this page.</h3>
@@ -20,7 +20,7 @@ function AdminView() {
   }
 
   return (
-    <div className="admin-view">
+    <div className="main-container">
       <Card hoverable>
         <Title>Admin Control Panel</Title>
         <h2>You have the power!</h2>

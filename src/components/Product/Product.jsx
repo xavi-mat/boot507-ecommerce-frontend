@@ -11,7 +11,7 @@ import Review from './Review/Review'
 function Product() {
 
   const emptyProduct = {
-    name: "", price: null, description: "", image: ""
+    name: "", price: null, description: "", image: "",
   }
 
   const { id } = useParams();
