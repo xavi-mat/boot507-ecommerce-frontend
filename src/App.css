@@ -1,9 +1,0 @@
-@import '~antd/dist/antd.css';
-
-body{
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(218,124,30,0.8295518036316089) 31%, rgba(255,0,0,0.4794117476091999) 100%);
-   
-}
-
-
