@@ -2,9 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
 import { Link } from "react-router-dom";
 import { OrdersContext } from "../../context/OrdersContext/OrdersState";
-import { notification, Row, Col, Button, Space } from "antd";
+import { notification, Card, Row, Col, Button, Space } from "antd";
 import { ProductsContext } from "../../context/ProductsContext/ProductsState";
 import CartItem from "./CartItem/CartItem";
+
 
 function Cart() {
   const { cart, clearCart } = useContext(ProductsContext);
@@ -22,7 +23,28 @@ function Cart() {
   }, [cart])
 
   if (cart.length < 1) {
-    return (<div style={{margin:"2rem"}}><h1>My Cart</h1><div>Your cart is empty.</div></div>)
+    return (<div style={{ margin: "2rem" }}><h1>My Cart</h1>
+      <div>
+        <Row>
+          <Col span={6}></Col>
+          
+          <Col span={12}>
+            <div className="site-card-border-less-wrapper">
+              <Card title="Your cart it's empty rigth now" bordered={true} style={{ width: 400 }}>
+                <p>Please go to products and buy.</p>
+
+              </Card>
+            </div>
+          </Col>
+          
+          <Col span={6}>
+
+          </Col>
+
+        </Row>
+
+
+      </div></div>)
   }
 
   const doPayment = () => {
