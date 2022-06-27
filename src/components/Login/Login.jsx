@@ -11,14 +11,21 @@ function Login() {
 
   useEffect(() => {
     if (searchParams.get('confirmed') === "true") {
-      notification.info({message:"Email confirmed", description:"Please, try to log in."})
+      notification.info({
+        placement: "bottomLeft",
+        message: "Email confirmed",
+        description: "Please, try to log in."
+      })
     }
   }, [])
 
   useEffect(() => {
     if (message) {
       const notificationType = message.startsWith("Welcome") ? "success" : "error";
-      notification[notificationType]({ message: message });
+      notification[notificationType]({
+        placement: "bottomLeft",
+        message: message
+      });
       if (message.startsWith("Welcome")) {
         navigate("/");
       } else {
@@ -45,7 +52,7 @@ function Login() {
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        style={{maxWidth:"600px"}}
+        style={{ maxWidth: "600px" }}
       >
         <Form.Item
           label="Email"

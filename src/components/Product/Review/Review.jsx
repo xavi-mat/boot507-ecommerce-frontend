@@ -13,9 +13,15 @@ function Review({ userIsAuthor, review }) {
                 { headers: { Authorization: token } }
             );
             if (res.data?.result) {
-                notification.success({ message: "Review deleted" });
+                notification.success({
+                    placement: "bottomLeft",
+                    message: "Review deleted"
+                 });
             } else {
-                notification.error({ message: "Unable to delete review" })
+                notification.error({
+                    placement: "bottomLeft",
+                    message: "Unable to delete review"
+                 })
             }
         } catch (error) {
 

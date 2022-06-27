@@ -23,7 +23,10 @@ function ManagerProductMin({ name, price, description, image, active, id, putInF
         { headers: { Authorization: token } }
       );
       if (res.status == "200") {
-        notification.success({ message: "Product deleted" });
+        notification.success({
+          placement: "bottomLeft",
+          message: "Product deleted"
+        });
         getProducts();
       }
     } catch (error) {
@@ -32,7 +35,7 @@ function ManagerProductMin({ name, price, description, image, active, id, putInF
   })
 
   return (
-    <Card hoverable style={{width:"100%"}}>
+    <Card hoverable style={{ width: "100%" }}>
       <Row>
         <Col lg={4}>
           <div style={{ maxWidth: "150px", maxHeight: "150px", overflow: "hidden" }}>

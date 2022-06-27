@@ -100,7 +100,10 @@ export const UserProvider = ({ children }) => {
                 { headers: { Authorization: token } }
             )
             if (res.status == 200) {
-                notification.success({message: "Data updated"});
+                notification.success({
+                    placement: "bottomLeft",
+                    message: "Data updated"
+                });
             }
         } catch (error) {
             console.log("FULL ERROR:", error);
