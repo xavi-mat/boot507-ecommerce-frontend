@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 import axios from "axios";
 import OrdersReducer from "./OrdersReducer";
 
-const API_URL = "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const initialOrdersState = {
   orders: [],

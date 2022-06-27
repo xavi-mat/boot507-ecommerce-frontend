@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { ProductsContext } from '../../../../context/ProductsContext/ProductsState';
 import { CheckSquareTwoTone, CloseSquareOutlined, CloseSquareTwoTone } from '@ant-design/icons';
 
-const API_URL = "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function ManagerProductMin({ name, price, description, image, active, id, putInForm }) {
 

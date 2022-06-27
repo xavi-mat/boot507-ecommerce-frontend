@@ -6,7 +6,7 @@ import { ProductsContext } from '../../../../context/ProductsContext/ProductsSta
 import ProductImage from '../../../Products/ProductImage/ProductImage';
 const { TextArea } = Input;
 
-const API_URL = "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function ProductForm({ name, price, description, image, active, id, putInForm }) {
 

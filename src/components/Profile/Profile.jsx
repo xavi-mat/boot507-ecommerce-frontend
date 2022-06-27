@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
-import { Col, Row, Typography, Space, Button, Card, DatePicker, Input, Upload } from 'antd';
+import { Col, Row, Typography, Space, Button, Card, Input } from 'antd';
 import { Link } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
-const API_URL = "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function Profile() {
 
