@@ -20,7 +20,7 @@ function AdminView() {
   }
 
   return (
-    <div style={{ margin: "1rem 2rem" }}>
+    <div className="admin-view">
       <Card hoverable>
         <Title>Admin Control Panel</Title>
         <h2>You have the power!</h2>
