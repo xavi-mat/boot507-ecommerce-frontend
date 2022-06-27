@@ -43,10 +43,6 @@ function Profile() {
     updateUser(updatedUser);
   }
 
-  const handleSubmitAvatar = (ev) => {
-    ev.preventDefault();
-    console.log(ev.target.avatar.value)
-  }
   return (
     <div style={{ margin: '1rem 2rem' }}>
       <Title>My Profile</Title>
@@ -99,90 +95,3 @@ function Profile() {
 }
 
 export default Profile;
-
-
-/**
-
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { message, Upload } from 'antd';
-import { useState } from 'react';
-
-const getBase64 = (img, callback) => {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
-  reader.readAsDataURL(img);
-};
-
-const beforeUpload = (file) => {
-  const isJpg = file.type === 'image/jpeg';
-
-  if (!isJpg) {
-    message.error('You can only upload a JPG file!');
-  }
-
-  const isLt2M = file.size / 1024 / 1024 < 2;
-
-  if (!isLt2M) {
-    message.error('Image must smaller than 2MB!');
-  }
-
-  return isJpg && isLt2M;
-};
-
-const App = () => {
-  const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState("avatar");
-
-  const handleChange = (info) => {
-    if (info.file.status === 'uploading') {
-      setLoading(true);
-      return;
-    }
-
-    if (info.file.status === 'done') {
-      // Get this url from response in real world.
-      getBase64(info.file.originFileObj, (url) => {
-        setLoading(false);
-        setImageUrl(url);
-      });
-    }
-  };
-
-  const uploadButton = (
-    <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        Upload
-      </div>
-    </div>
-  );
-
-  return (
-    <Upload
-      name="avatar"
-      listType="picture-card"
-      className="avatar-uploader"
-      showUploadList={false}
-      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-      beforeUpload={beforeUpload}
-      onChange={handleChange}
-    >
-    <img
-          src={imageUrl}
-          alt="avatar"
-          style={{
-            width: '100%',
-          }}
-        />
-    </Upload>
-  );
-};
-
-export default App;
-
-
- */
