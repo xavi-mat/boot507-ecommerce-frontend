@@ -1,6 +1,7 @@
 import { createContext, useReducer } from "react";
 import axios from "axios";
 import UserReducer from "./UserReducer";
+import { notification } from "antd";
 
 const token = JSON.parse(localStorage.getItem("token"));
 
@@ -91,8 +92,29 @@ export const UserProvider = ({ children }) => {
     };
 
     const updateUser = async (user) => {
-        // TODO: update User
-        console.log(user);
+        try {
+            const token = JSON.parse(localStorage.getItem("token"));
+            const res = await axios.put(
+                API_URL + "/users",
+                user,
+                { headers: { Authorization: token } }
+            )
+            if (res.status == 200) {
+                notification.success({message: "Data updated"});
+            }
+        } catch (error) {
+            console.log("FULL ERROR:", error);
+            const thereIsMessage = error.response?.data?.message;
+            console.warn("ERROR MESSAGE:", thereIsMessage);
+            if (thereIsMessage) {
+                dispatch({
+                    type: "SET_MESSAGE",
+                    payload: thereIsMessage,
+                })
+            } else {
+                throw error;
+            }
+        }
     };
 
     return (
