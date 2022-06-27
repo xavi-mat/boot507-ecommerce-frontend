@@ -13,7 +13,6 @@ import Cart from "./components/Cart/Cart";
 import Premium from "./components/Premium/Premium";
 import Manager from "./components/Manager/Manager";
 import Footer from "./components/Footer/Footer";
-
 import { UserProvider } from "./context/UserContext/UserState";
 import { ProductsProvider } from "./context/ProductsContext/ProductsState";
 import { OrdersProvider } from "./context/OrdersContext/OrdersState";
