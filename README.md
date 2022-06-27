@@ -41,6 +41,12 @@ Ejercicio para [The Bridge](https://thebridge.tech).
 * Xavimat [GitHub](https://github.com/xavi-mat) [LinkedIn](https://www.linkedin.com/in/xavier-matoses/)
 
 ### Instalación
+BACKEND:
+https://github.com/xavi-mat/boot507-ecommerce-backend
+
+FRONTEND:
+https://github.com/xavi-mat/boot507-ecommerce-frontend
+
 * El proyecto utiliza un backend creado con NodeJS, asociado con una base de datos MySQL gestionada con sequelize.
 * Es necesario clonarse los dos repositorios: Backend y Frontend y ejecutar `npm install` en ambos.
 * En el Backend será necesario crear el archivo `config.json` con los datos de acceso a la Base de Datos (ver estructura del archivo en `config.example.json`).
@@ -52,10 +58,38 @@ Ejercicio para [The Bridge](https://thebridge.tech).
 * ...
 
 #### Backend
-https://github.com/xavi-mat/boot507-ecommerce-backend
+* ...
 
 ## Funcionamiento
 * ...
+### Rutas
+Listado completo
+
+|Ruta|Nombre|Rol|Uso|
+|----+------+---+---|
+|`/`|Inicio|||
+|`/products`|Productos|||
+|`/product/?`|Producto ?|||
+|`/cart`|Carrito|||
+|`/register`|Registro|||
+|`/login`|Acceso|||
+|`/premium`|Cliente premium|||
+|`/orders`|Pedidos|||
+|`/profile`|Perfil|||
+|`/manager`|Gerente|||
+|`/admin`|Administrador|||
+
+#### `/` Inicio
+#### `/products` Productos
+#### `/product/?` Producto ?
+#### `/cart` Carrito
+#### `/register` Registro
+#### `/login` Acceso
+#### `/premium` Cliente premium
+#### `/orders` Pedidos
+#### `/profile` Perfil
+#### `/manager` Gerente
+#### `/admin` Administrador
 
 ## Agradecimientos
 * ...
