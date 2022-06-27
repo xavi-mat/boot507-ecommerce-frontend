@@ -1,0 +1,15 @@
+/* @import url('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> '); */
+
+.logo-image{
+    max-width: 5%;
+    background-color: none;
+    display: block;
+ margin: 0px auto;
+
+}
+
+.titulo{
+ max-width: fit-content;
+ max-height: 20%;
+
+}
