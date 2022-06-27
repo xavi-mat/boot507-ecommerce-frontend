@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
-import { Col, Row, Typography, Space, Button, Card, DatePicker, Input } from 'antd';
+import { Col, Row, Typography, Space, Button, Card, DatePicker, Input, Upload } from 'antd';
 import { Link } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
@@ -12,7 +12,6 @@ function Profile() {
   const [username, setUsername] = useState(user?.username);
   const [firstName, setfirstName] = useState(user?.firstName);
   const [lastName, setlastName] = useState(user?.lastName);
-  const [birthDate, setbirthDate] = useState(user?.birthDate);
   const [password, setPassword] = useState();
   const token = JSON.parse(localStorage.getItem("token"));
 
@@ -20,7 +19,6 @@ function Profile() {
     setUsername(user?.username);
     setfirstName(user?.firstName);
     setlastName(user?.lastName);
-    setbirthDate(user?.birthDate.substring(0, 10));
   }, [user]);
 
   if (!token) {
@@ -37,23 +35,26 @@ function Profile() {
   const logOutUser = () => {
     logout();
   };
-  const handleBirthDate = (ev) => {
-    setbirthDate(ev.target.value);
-  }
   const handlePassword = (ev) => {
     setPassword(ev.target.value);
   }
   const handleUpdateUser = () => {
-    const updatedUser = { username, firstName, lastName, birthDate, password };
+    const updatedUser = { username, firstName, lastName, password };
     updateUser(updatedUser);
   }
 
+  const handleSubmitAvatar = (ev) => {
+    ev.preventDefault();
+    console.log(ev.target.avatar.value)
+  }
   return (
     <div style={{ margin: '1rem 2rem' }}>
       <Title>My Profile</Title>
       <Row>
         <Col span={8}>
-          <img src={API_URL + "/users/avatar/" + user?.avatar} style={{ width: "100%" }} />
+          <div>
+            <img src={API_URL + "/users/avatar/" + user?.avatar} style={{ width: "100%" }} />
+          </div>
         </Col>
         <Col span={16} style={{ padding: '0 1rem' }}>
           <Card style={{ marginBottom: '1rem' }}>
@@ -77,13 +78,6 @@ function Profile() {
             <Space size="large">
               <div>Email: <strong>{user?.email}</strong></div>
               <div>Role: <strong>{user?.role}</strong></div>
-              <div>
-                <input
-                  type="date"
-                  onChange={handleBirthDate}
-                  value={birthDate || ''}
-                />
-              </div>
               <div>
                 <Input.Password
                   placeholder="New password"
