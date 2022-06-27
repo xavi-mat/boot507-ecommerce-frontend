@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
-import { Col, Row, Typography, Space, Button, Card, Radio } from 'antd';
-import { Link, useNavigate } from "react-router-dom";
+import { Col, Row, Typography, Space, Button, Card, DatePicker, Input } from 'antd';
+import { Link } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
 const API_URL = "http://localhost:8080";
@@ -9,38 +9,47 @@ const API_URL = "http://localhost:8080";
 function Profile() {
 
   const { user, logout, updateUser } = useContext(UserContext);
-
   const [username, setUsername] = useState(user?.username);
   const [firstName, setfirstName] = useState(user?.firstName);
   const [lastName, setlastName] = useState(user?.lastName);
-  const [gender, setGender] = useState(user?.gender);
-
-  const navigate = useNavigate();
+  const [birthDate, setbirthDate] = useState(user?.birthDate);
+  const [password, setPassword] = useState();
+  const token = JSON.parse(localStorage.getItem("token"));
 
   useEffect(() => {
-    if (!user) {
-      return navigate("/login");
-    }
+    setUsername(user?.username);
+    setfirstName(user?.firstName);
+    setlastName(user?.lastName);
+    setbirthDate(user?.birthDate.substring(0, 10));
   }, [user]);
 
+  if (!token) {
+    // TODO: Do this check using React Guards?
+    return (
+      <div style={{ margin: "1rem 2rem" }}>
+        <Title>My Profile</Title>
+        <h2>Unauthorized</h2>
+        <h3>Log-in needed to see this page.</h3>
+      </div>
+    )
+  }
 
   const logOutUser = () => {
     logout();
   };
-
-  const handleSetGender = (ev) => {
-    setGender(ev.target.value)
+  const handleBirthDate = (ev) => {
+    setbirthDate(ev.target.value);
   }
-
+  const handlePassword = (ev) => {
+    setPassword(ev.target.value);
+  }
   const handleUpdateUser = () => {
-    const updatedUser = { username, firstName, lastName, gender };
+    const updatedUser = { username, firstName, lastName, birthDate, password };
     updateUser(updatedUser);
   }
 
-  // console.info("USUARIO:", user)
-
   return (
-    <div style={{ padding: '1rem 3rem' }}>
+    <div style={{ margin: '1rem 2rem' }}>
       <Title>My Profile</Title>
       <Row>
         <Col span={8}>
@@ -65,17 +74,26 @@ function Profile() {
                 <Paragraph editable={{ onChange: setlastName }} style={{ fontWeight: "bold" }}>{lastName}</Paragraph>
               </Space>
             </div>
-            <div>
-              <span>Gender: </span>
-              <Radio.Group defaultValue={gender} buttonStyle="solid" onChange={handleSetGender}>
-                <Radio.Button value={null}>-</Radio.Button>
-                <Radio.Button value="F">F</Radio.Button>
-                <Radio.Button value="M">M</Radio.Button>
-              </Radio.Group>
+            <Space size="large">
               <div>Email: <strong>{user?.email}</strong></div>
               <div>Role: <strong>{user?.role}</strong></div>
+              <div>
+                <input
+                  type="date"
+                  onChange={handleBirthDate}
+                  value={birthDate || ''}
+                />
+              </div>
+              <div>
+                <Input.Password
+                  placeholder="New password"
+                  onChange={handlePassword}
+                />
+              </div>
+            </Space>
+            <div>
+              <Button type="primary" onClick={handleUpdateUser}>Update</Button>
             </div>
-            <Button onClick={handleUpdateUser}>Update</Button>
           </Card>
           <Button>
             <Link onClick={logOutUser} to={"/"}>Log Out</Link>

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios"
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import FormReview from './FormReview/FormReview'
 import { UserContext } from '../../context/UserContext/UserState'
 import ProductImage from '../Products/ProductImage/ProductImage'
@@ -19,10 +19,19 @@ function Product() {
   const [prod, setProd] = useState(emptyProduct);
   const { user } = useContext(UserContext);
   const { cart, addToCart, getProductById } = useContext(ProductsContext);
+  const navigate = useNavigate();
 
   async function getProduct(id) {
-    const theProd = await getProductById(id);
-    setProd(theProd);
+    try {
+      const theProd = await getProductById(id);
+      if (theProd) {
+        setProd(theProd);
+      } else {
+        navigate("/products");
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
   async function getReviews() {
     const res = await axios.get("http://localhost:8080/reviews/product/" + id);
@@ -76,7 +85,7 @@ function Product() {
           <Descriptions bordered>
             <Descriptions.Item>{prod.description}</Descriptions.Item>
           </Descriptions>
-          <div style={{marginTop:"2rem"}}>
+          <div style={{ marginTop: "2rem" }}>
             <h2>Customer reviews</h2>
             <div>
               {user && canReview ?

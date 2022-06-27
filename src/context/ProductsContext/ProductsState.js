@@ -66,6 +66,22 @@ export const ProductsProvider = ({ children }) => {
         notification.success({ message: "Added to cart", description: product.name });
     };
 
+    const removeFromCart = (product) => {
+        const newCart = state.cart
+            .map(p => {
+                if (p.id === product.id) {
+                    p.quantity--
+                }
+                return p;
+            })
+            .filter(p => p.quantity > 0);
+        dispatch({
+            type: "RENEW_CART",
+            payload: newCart
+        })
+        notification.success({ message: "Removed from cart", description: product.name });
+    };
+
     const clearCart = () => {
         dispatch({
             type: "CLEAR_CART",
@@ -80,6 +96,7 @@ export const ProductsProvider = ({ children }) => {
                 getProductById,
                 addToCart,
                 clearCart,
+                removeFromCart,
             }}
         >
             {children}
