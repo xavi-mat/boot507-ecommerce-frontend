@@ -51,6 +51,7 @@ function Cart() {
     createOrder(cart);
     clearCart();
     notification.success({
+      placement: "bottomLeft",
       message: 'Order sent',
       description:
         (<>Your order has been received by our team.<br />It will be soon prepared for delivery.</>),

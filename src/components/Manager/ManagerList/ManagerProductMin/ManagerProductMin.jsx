@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { ProductsContext } from '../../../../context/ProductsContext/ProductsState';
 import { CheckSquareTwoTone, CloseSquareOutlined, CloseSquareTwoTone } from '@ant-design/icons';
 
-const API_URL = "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function ManagerProductMin({ name, price, description, image, active, id, putInForm }) {
 
@@ -23,7 +23,10 @@ function ManagerProductMin({ name, price, description, image, active, id, putInF
         { headers: { Authorization: token } }
       );
       if (res.status == "200") {
-        notification.success({ message: "Product deleted" });
+        notification.success({
+          placement: "bottomLeft",
+          message: "Product deleted"
+        });
         getProducts();
       }
     } catch (error) {
@@ -32,7 +35,7 @@ function ManagerProductMin({ name, price, description, image, active, id, putInF
   })
 
   return (
-    <Card hoverable style={{width:"100%"}}>
+    <Card hoverable style={{ width: "100%" }}>
       <Row>
         <Col lg={4}>
           <div style={{ maxWidth: "150px", maxHeight: "150px", overflow: "hidden" }}>

@@ -11,7 +11,7 @@ const initialUserstate = {
     message: "",
 }
 
-const API_URL = "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const UserContext = createContext(initialUserstate);
 
@@ -100,7 +100,10 @@ export const UserProvider = ({ children }) => {
                 { headers: { Authorization: token } }
             )
             if (res.status == 200) {
-                notification.success({message: "Data updated"});
+                notification.success({
+                    placement: "bottomLeft",
+                    message: "Data updated"
+                });
             }
         } catch (error) {
             console.log("FULL ERROR:", error);

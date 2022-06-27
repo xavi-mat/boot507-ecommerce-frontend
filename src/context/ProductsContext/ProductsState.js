@@ -10,7 +10,7 @@ const initialState = {
     cart: cart ? cart : [],
 };
 
-const API_URL = "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const ProductsContext = createContext(initialState);
 
@@ -63,7 +63,11 @@ export const ProductsProvider = ({ children }) => {
                 payload: product
             });
         }
-        notification.success({ message: "Added to cart", description: product.name });
+        notification.success({
+            placement: "bottomLeft",
+            message: "Added to cart",
+            description: product.name
+        });
     };
 
     const removeFromCart = (product) => {
@@ -79,7 +83,11 @@ export const ProductsProvider = ({ children }) => {
             type: "RENEW_CART",
             payload: newCart
         })
-        notification.success({ message: "Removed from cart", description: product.name });
+        notification.success({
+            placement: "bottomLeft",
+            message: "Removed from cart",
+            description: product.name
+        });
     };
 
     const clearCart = () => {

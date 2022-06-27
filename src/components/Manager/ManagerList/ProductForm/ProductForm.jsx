@@ -6,7 +6,7 @@ import { ProductsContext } from '../../../../context/ProductsContext/ProductsSta
 import ProductImage from '../../../Products/ProductImage/ProductImage';
 const { TextArea } = Input;
 
-const API_URL = "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function ProductForm({ name, price, description, image, active, id, putInForm }) {
 
@@ -24,7 +24,10 @@ function ProductForm({ name, price, description, image, active, id, putInForm })
           { headers: { Authorization: token } }
         );
         if (res.status == 200) {
-          notification.success({ message: `Product #${values.id} updated` });
+          notification.success({
+            placement: "bottomLeft",
+            message: `Product #${values.id} updated`
+          });
           getProducts();
           putInForm(undefined);
         }
@@ -35,7 +38,10 @@ function ProductForm({ name, price, description, image, active, id, putInForm })
           { headers: { Authorization: token } }
         );
         if (res.status == 201) {
-          notification.success({ message: "New product added" });
+          notification.success({
+            placement: "bottomLeft",
+            message: "New product added"
+          });
           getProducts();
         }
       }
@@ -53,7 +59,7 @@ function ProductForm({ name, price, description, image, active, id, putInForm })
   })
 
   return (
-    <Card hoverable style={{width:"100%"}}>
+    <Card hoverable style={{ width: "100%" }}>
       <Form
         labelCol={{ span: 0 }}
         wrapperCol={{ span: 24 }}
