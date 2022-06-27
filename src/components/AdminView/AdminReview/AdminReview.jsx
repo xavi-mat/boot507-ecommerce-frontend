@@ -1,9 +1,8 @@
 import { CheckSquareTwoTone, CloseSquareTwoTone } from "@ant-design/icons";
-import { Button, Checkbox, notification, Table, Typography } from "antd";
+import { Button, notification, Table } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const { Paragraph } = Typography;
 const API_URL = process.env.REACT_APP_API_URL;
 
 function AdminReview() {
