@@ -5,16 +5,24 @@ import { useContext } from "react";
 import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
 
 function CartItem({ p }) {
-  const { addToCart } = useContext(ProductsContext);
+  const { addToCart, removeFromCart } = useContext(ProductsContext);
   return (<>
     <div style={{ marginBottom: "1rem" }}>
       <Card
         type="inner"
         title={<strong>{p.name}</strong>}
         extra={<>
-          <MinusCircleOutlined style={{ fontSize: '1.5em', color: '#08c' }} onClick={() => { alert("hey") }} />
-          <span style={{ margin: "0 0.5em", fontSize: '1.5em' }}>{p.quantity}</span>
-          <PlusCircleOutlined style={{ fontSize: '1.5em', color: '#084' }} onClick={() => { addToCart(p) }} />
+          <MinusCircleOutlined
+            style={{ fontSize: '1.5em', color: '#08c' }}
+            onClick={() => { removeFromCart(p) }}
+          />
+          <span style={{ margin: "0 0.5em", fontSize: '1.5em' }}>
+            {p.quantity}
+          </span>
+          <PlusCircleOutlined
+            style={{ fontSize: '1.5em', color: '#084' }}
+            onClick={() => { addToCart(p) }}
+          />
         </>}>
         <Col >
           <Row >
