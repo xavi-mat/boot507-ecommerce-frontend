@@ -7,7 +7,7 @@ function Login() {
 
   const { login, message, setMessage } = useContext(UserContext);
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     if (searchParams.get('confirmed') === "true") {
@@ -17,6 +17,7 @@ function Login() {
         description: "Please, try to log in."
       })
     }
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
@@ -32,6 +33,7 @@ function Login() {
         setMessage("");
       }
     }
+    // eslint-disable-next-line
   }, [message]);
 
   const onFinish = (values) => {

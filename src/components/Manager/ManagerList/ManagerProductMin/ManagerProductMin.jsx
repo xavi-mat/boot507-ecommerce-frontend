@@ -1,9 +1,9 @@
-import { Card, Space, Button, Row, Col, Popconfirm, notification, Checkbox } from 'antd';
+import { Card, Space, Button, Row, Col, Popconfirm, notification } from 'antd';
 import ProductImage from '../../../Products/ProductImage/ProductImage';
 import axios from "axios";
 import { useContext } from 'react';
 import { ProductsContext } from '../../../../context/ProductsContext/ProductsState';
-import { CheckSquareTwoTone, CloseSquareOutlined, CloseSquareTwoTone } from '@ant-design/icons';
+import { CheckSquareTwoTone, CloseSquareTwoTone } from '@ant-design/icons';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -22,7 +22,7 @@ function ManagerProductMin({ name, price, description, image, active, id, putInF
         API_URL + "/products/" + id,
         { headers: { Authorization: token } }
       );
-      if (res.status == "200") {
+      if (res.status === 200) {
         notification.success({
           placement: "bottomLeft",
           message: "Product deleted"

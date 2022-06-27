@@ -99,7 +99,7 @@ export const UserProvider = ({ children }) => {
                 user,
                 { headers: { Authorization: token } }
             )
-            if (res.status == 200) {
+            if (res.status === 200) {
                 notification.success({
                     placement: "bottomLeft",
                     message: "Data updated"

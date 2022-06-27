@@ -23,7 +23,7 @@ function ProductForm({ name, price, description, image, active, id, putInForm })
           values,
           { headers: { Authorization: token } }
         );
-        if (res.status == 200) {
+        if (res.status === 200) {
           notification.success({
             placement: "bottomLeft",
             message: `Product #${values.id} updated`
@@ -37,7 +37,7 @@ function ProductForm({ name, price, description, image, active, id, putInForm })
           values,
           { headers: { Authorization: token } }
         );
-        if (res.status == 201) {
+        if (res.status === 201) {
           notification.success({
             placement: "bottomLeft",
             message: "New product added"

@@ -11,6 +11,7 @@ const ManagerList = () => {
 
   useEffect(() => {
     getProducts();
+    // eslint-disable-next-line
   }, []);
 
   const putInForm = (id) => {

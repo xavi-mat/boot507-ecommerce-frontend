@@ -14,6 +14,7 @@ function Header() {
     if (!user) {
       getUserInfo();
     }
+    // eslint-disable-next-line
   }, [user]);
 
   const commonItems = [

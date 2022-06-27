@@ -41,6 +41,7 @@ function Product() {
   useEffect(() => {
     getProduct(id);
     getReviews();
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {

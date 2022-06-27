@@ -29,7 +29,7 @@ export const ProductsProvider = ({ children }) => {
 
     const getProductById = async (id) => {
         try {
-            let product = state.products.find(p => p.id == id);
+            let product = state.products.find(p => p.id === +id);
             if (!product) {
                 const res = await axios.get(API_URL + "/products/id/" + id);
                 product = res.data.product;

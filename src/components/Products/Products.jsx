@@ -8,6 +8,7 @@ const Products = () => {
 
   useEffect(() => {
     getProducts();
+    // eslint-disable-next-line
   }, []);
 
   const product = products

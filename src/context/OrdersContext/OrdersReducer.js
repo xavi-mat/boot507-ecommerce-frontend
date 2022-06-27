@@ -5,6 +5,8 @@ const orders = (state, action) => {
                 ...state,
                 orders: action.payload,
             }
+        default:
+            return state;
     }
 };
 

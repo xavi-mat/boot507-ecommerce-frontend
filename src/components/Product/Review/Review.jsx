@@ -36,6 +36,7 @@ function Review({ userIsAuthor, review }) {
                     <img
                         src={API_URL + "/users/avatar/" + review.User.avatar}
                         style={{ maxHeight: "80px" }}
+                        alt=""
                     />
                     <h3>{review.User.username}</h3>
                 </Space>

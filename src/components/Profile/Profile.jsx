@@ -49,7 +49,11 @@ function Profile() {
       <Row>
         <Col span={8}>
           <div>
-            <img src={API_URL + "/users/avatar/" + user?.avatar} style={{ width: "100%" }} />
+            <img
+              src={API_URL + "/users/avatar/" + user?.avatar}
+              style={{ width: "100%" }}
+              alt=""
+            />
           </div>
         </Col>
         <Col span={16} style={{ padding: '0 1rem' }}>

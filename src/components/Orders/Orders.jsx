@@ -10,6 +10,7 @@ function Orders() {
 
   useEffect(() => {
     getOrders();
+    // eslint-disable-next-line
   }, []);
 
   if (!token) {
