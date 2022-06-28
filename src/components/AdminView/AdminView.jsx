@@ -1,5 +1,6 @@
 import { Card, Typography } from "antd";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
 import AdminReview from "./AdminReview/AdminReview";
 const { Title } = Typography;
@@ -9,12 +10,14 @@ function AdminView() {
   const { user } = useContext(UserContext);
 
   if (!(["admin"].includes(user?.role))) {
-    // TODO: Do this check using React Guards
     return (
       <div className="main-container">
-        <Title>Admin Control Panel</Title>
-        <h2>Unauthorized</h2>
-        <h3>Not enough permissions to access this page.</h3>
+        <Card>
+          <Title>Admin Control Panel</Title>
+          <h2>Unauthorized</h2>
+          <h3>Not enough permissions to access this page.</h3>
+          <p>Please, try to <Link to="/login">Log in</Link></p>
+        </Card>
       </div>
     )
   }

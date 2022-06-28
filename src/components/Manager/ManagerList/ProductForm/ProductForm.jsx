@@ -50,10 +50,6 @@ function ProductForm({ name, price, description, image, active, id, putInForm })
     }
   }
 
-  const onFinishFailed = (errorInfo) => {
-    // console.log("Failed:", errorInfo);
-  }
-
   const handleClose = (() => {
     putInForm(undefined);
   })
@@ -64,7 +60,6 @@ function ProductForm({ name, price, description, image, active, id, putInForm })
         labelCol={{ span: 0 }}
         wrapperCol={{ span: 24 }}
         onFinish={handleForm}
-        onFinishFailed={onFinishFailed}
         initialValues={{ name, price, description, image, active, id }}
       >
         <h2>{id ? null : "New product"}</h2>

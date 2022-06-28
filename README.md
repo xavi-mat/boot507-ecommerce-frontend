@@ -192,6 +192,8 @@ Hemos empleado mucho tiempo intentando comprender la biblioteca **Ant Design**, 
 
 La **carga de imágenes** ha sido un verdadero desafío que no hemos tenido tiempo de implementar. Se podría utilizar en los avatares de los usuarios y en la creación y actualización de los productos por parte del gerente.
 
+Tampoco se ha realizado una **gestión de errores centralizada** que enviase al usuario mensajes de error personalizados y redirigiese al login en caso de fallo en la autenticación.
+
 ## Agradecimientos
 * A [Sofía](https://github.com/SofiaPinilla), [Ger](https://github.com/GeerDev) e [Iván](https://github.com/ivanpuebla10), nuestros profes.
 * A los compañeros/as del bootcamp.

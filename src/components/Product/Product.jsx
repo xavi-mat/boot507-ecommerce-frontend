@@ -5,7 +5,7 @@ import FormReview from './FormReview/FormReview'
 import { UserContext } from '../../context/UserContext/UserState'
 import ProductImage from '../Products/ProductImage/ProductImage'
 import { ProductsContext } from '../../context/ProductsContext/ProductsState'
-import { Button, Col, Descriptions, Rate, Row } from 'antd'
+import { Button, Card, Col, Descriptions, Rate, Row } from 'antd'
 import Review from './Review/Review'
 
 function Product() {
@@ -55,7 +55,7 @@ function Product() {
     canReview = canReview && !userIsAuthor;
     stars.count++;
     stars.total += r.stars;
-    return (<Review key={i} review={r} userIsAuthor={userIsAuthor} />)
+    return (<Review key={i} review={r} userIsAuthor={userIsAuthor} getReviews={getReviews} />)
   }
   );
 
@@ -65,6 +65,7 @@ function Product() {
 
   return (
     <div style={{ padding: "0 2rem" }}>
+    <Card>
       <Row>
         <Col sm={10}>
           <ProductImage image={prod.image} width="100%" />
@@ -97,6 +98,7 @@ function Product() {
           <div>{review}</div>
         </Col>
       </Row>
+      </Card>
     </div>
   );
 };

@@ -40,10 +40,6 @@ function Login() {
     login(values);
   }
 
-  const onFinishFailed = (errorInfo) => {
-    // console.log("Failed:", errorInfo);
-  }
-
   return (
     <div style={{ padding: '1rem 3rem' }}>
       <h1>Login</h1>
@@ -53,7 +49,6 @@ function Login() {
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         style={{ maxWidth: "600px" }}
       >
         <Form.Item
