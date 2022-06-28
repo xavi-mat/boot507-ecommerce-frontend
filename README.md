@@ -116,6 +116,9 @@ El contenido que se encuentra descrito en cada ruta, en la sección siguiente.
 #### `/` Inicio
 Presenta la página principal con el logo y un carrusel de imágenes.
 
+<img src="C:\Users\kokol\Desktop\Nueva carpeta\boot507-ecommerce-frontend\src\assets\gif.gif">
+
+
 #### `/products` Productos
 Presenta el listado de todos los productos. Cada uno en una tarjeta con su imagen, nombre, descripción, precio y el botón "añadir al carrito". La parte central de cada tarjeta es clicable, y lleva a la página del producto.
 
