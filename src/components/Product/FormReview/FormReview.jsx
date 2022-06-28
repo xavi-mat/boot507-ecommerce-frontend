@@ -27,9 +27,6 @@ function FormReview({ id, getReviews }) {
     }
   }
 
-  const onFinishFailed = (errorInfo) => {
-    // console.log("Failed:", errorInfo);
-  }
   return (
     <div>
       <Form
@@ -38,7 +35,6 @@ function FormReview({ id, getReviews }) {
         wrapperCol={{ span: 20 }}
         initialValues={{ remember: true, stars: 1 }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
       >
         <Form.Item
           label="Select stars"

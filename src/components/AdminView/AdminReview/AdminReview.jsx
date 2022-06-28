@@ -34,7 +34,9 @@ function AdminReview() {
       if (res.status === 200) {
         notification.success({
           placement: "bottomLeft",
-          message: "Review updated",
+          message: active ?
+            <><CheckSquareTwoTone twoToneColor="#00BB00" /> Review enabled</> :
+            <><CloseSquareTwoTone twoToneColor="#FF0000" /> Review disabled</>,
         });
         getAllReviews();
       }
@@ -79,8 +81,6 @@ function AdminReview() {
     { title: 'Stars', dataIndex: 'stars', key: 'stars', },
     { title: 'Status', dataIndex: 'active', key: 'active', },
     { title: 'Update', dataIndex: 'update', key: 'update', },
-    // { title: 'Delete', dataIndex: 'delete', key: 'delete', },
-    // { title: 'all', dataIndex: 'all', key: 'all', },
   ];
   return (
     <Table

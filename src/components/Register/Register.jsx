@@ -32,10 +32,6 @@ function Register() {
     registerUser(values);
   }
 
-  const onFinishFailed = (errorInfo) => {
-    // console.log("Failed:", errorInfo);
-  }
-
   return (
     <div style={{ padding: '1rem 3rem' }}>
       <h1>Register</h1>
@@ -45,7 +41,6 @@ function Register() {
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
         style={{maxWidth:"600px"}}
       >

@@ -1,6 +1,7 @@
-import { Col, Row, Typography } from "antd";
+import { Card, Col, Row, Typography } from "antd";
 import { useContext, useEffect } from "react"
-import { OrdersContext } from "../../context/OrdersContext/OrdersState"
+import { Link } from "react-router-dom";
+import { OrdersContext } from "../../context/OrdersContext/OrdersState";
 import Order from "./Order/Order";
 const { Title } = Typography;
 
@@ -14,12 +15,14 @@ function Orders() {
   }, []);
 
   if (!token) {
-    // TODO: Do this check using React Guards
     return (
       <div style={{ margin: "1rem 2rem" }}>
-        <Title>My Orders</Title>
-        <h2>Unauthorized</h2>
-        <h3>Log-in needed to see this page.</h3>
+        <Card>
+          <Title>My Orders</Title>
+          <h2>Unauthorized</h2>
+          <h3>Log-in needed to see this page.</h3>
+          <p>Please, try to <Link to="/login">Log in</Link></p>
+        </Card>
       </div>
     )
   }

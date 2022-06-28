@@ -22,12 +22,14 @@ function Profile() {
   }, [user]);
 
   if (!token) {
-    // TODO: Do this check using React Guards?
     return (
       <div style={{ margin: "1rem 2rem" }}>
-        <Title>My Profile</Title>
-        <h2>Unauthorized</h2>
-        <h3>Log-in needed to see this page.</h3>
+        <Card>
+          <Title>My Profile</Title>
+          <h2>Unauthorized</h2>
+          <h3>Log-in needed to see this page.</h3>
+          <p>Please, try to <Link to="/login">Log in</Link></p>
+        </Card>
       </div>
     )
   }

@@ -23,39 +23,37 @@ function Cart() {
   }, [cart])
 
   if (cart.length < 1) {
-    return (<div className="cart-contain"><h1>My Cart</h1>
+    return (<div className="cart-contain">
+      <h1>My Cart</h1>
       <div>
         <Row>
           <Col span={6}></Col>
-          
+
           <Col span={12}>
             <div className="site-card-border-less-wrapper">
               <Card title="Your cart it's empty rigth now" bordered={true} className="card-cart" >
-                <p>Please go to products and buy.</p>
-
+                <p>Please <Link to="/products">go to products</Link> and buy.</p>
               </Card>
             </div>
           </Col>
-          
           <Col span={6}>
-
           </Col>
-
         </Row>
-
-
-      </div></div>)
+      </div>
+    </div>)
   }
 
-  const doPayment = () => {
-    createOrder(cart);
-    clearCart();
-    notification.success({
-      placement: "bottomLeft",
-      message: 'Order sent',
-      description:
-        (<>Your order has been received by our team.<br />It will be soon prepared for delivery.</>),
-    });
+  const doPayment = async () => {
+    const result = await createOrder(cart);
+    if (result) {
+      clearCart();
+      notification.success({
+        placement: "bottomLeft",
+        message: 'Order sent',
+        description:
+          (<>Your order has been received by our team.<br />It will be soon prepared for delivery.</>),
+      });
+    }
   }
 
   const cartItem = cart.map((p, i) => {

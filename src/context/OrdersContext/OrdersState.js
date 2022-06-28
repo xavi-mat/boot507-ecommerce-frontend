@@ -1,6 +1,7 @@
 import { createContext, useReducer } from "react";
 import axios from "axios";
 import OrdersReducer from "./OrdersReducer";
+import { notification } from "antd";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -41,6 +42,8 @@ export const OrdersProvider = ({ children }) => {
         {},
         { headers: { authorization: token } }
       );
+
+
       const OrderId = res.data.OrderId;
 
       cart.forEach(async product => {
@@ -51,9 +54,15 @@ export const OrdersProvider = ({ children }) => {
         );
       });
 
+      return true;
     } catch (error) {
       console.error(error);
       console.log("ERROR MESSAGE:", error.response.data.message)
+      notification.error({
+        message: "Some error has occurred. Please check your login status.",
+        placement: "bottomLeft"
+      });
+      return false;
     }
   };
 
