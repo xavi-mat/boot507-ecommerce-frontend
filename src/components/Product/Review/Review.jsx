@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-function Review({ userIsAuthor, review }) {
+function Review({ userIsAuthor, review, getReviews }) {
 
     const handleDelete = async () => {
         try {
@@ -17,6 +17,7 @@ function Review({ userIsAuthor, review }) {
                     placement: "bottomLeft",
                     message: "Review deleted"
                 });
+                getReviews();
             } else {
                 notification.error({
                     placement: "bottomLeft",

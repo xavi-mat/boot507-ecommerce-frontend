@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, notification } from "antd";
 import { Rate } from 'antd';
 import axios from 'axios';
 const { TextArea } = Input;
@@ -18,6 +18,12 @@ function FormReview({ id, getReviews }) {
       }
     } catch (error) {
       console.log(error);
+      if (error?.response?.data?.messages) {
+        notification.error({
+          message: error.response.data.messages,
+          placement: "bottomLeft"
+         });
+      }
     }
   }
 
