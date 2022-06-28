@@ -11,7 +11,7 @@ function Manager() {
   if (!(["admin", "manager"].includes(user?.role))) {
     // TODO: Do this check using React Guards
     return (
-      <div style={{ margin: "1rem 2rem" }}>
+      <div className="main-container">
         <Title>Manager</Title>
         <h2>Unauthorized</h2>
         <h3>Not enough permissions to access this page.</h3>
@@ -19,7 +19,7 @@ function Manager() {
     )
   } else {
     return (
-      <div style={{ margin: "1rem 2rem" }}>
+      <div className="main-container">
         <Title>Manager</Title>
         <ManagerList />
       </div>

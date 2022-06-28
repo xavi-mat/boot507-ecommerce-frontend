@@ -8,10 +8,7 @@ function ProductImage({ image, width="240px" }) {
     )
   } else {
     return (
-      <div style={{
-        width: "240px", height: "240px",
-        backgroundColor: "#BBBBBB", marginRight: "1rem"
-      }} >
+      <div className="product-empty">
       </div>
     );
   }

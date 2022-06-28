@@ -19,21 +19,18 @@ function Home() {
         <img className='titulo' src={titulo} alt="" />
 
 
-        <div className='paco'>
+        <div className='carousel-container'>
 
         <Carousel className='carousel' autoplay >
 
-          <img  src="https://images.pexels.com/photos/8794858/pexels-photo-8794858.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
-          <img  src="https://images.pexels.com/photos/10806583/pexels-photo-10806583.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
-          <img  src="https://images.pexels.com/photos/532220/pexels-photo-532220.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
-          <img  src="https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+          <img className='carousel-image' src="https://images.pexels.com/photos/8794858/pexels-photo-8794858.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+          <img className='carousel-image' src="https://images.pexels.com/photos/10806583/pexels-photo-10806583.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+          <img className='carousel-image' src="https://images.pexels.com/photos/532220/pexels-photo-532220.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+          <img className='carousel-image' src="https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
 
         </Carousel>
         </div>
       </div>
-
-
-
 
     </div>
   )

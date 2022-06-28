@@ -16,7 +16,7 @@ function Orders() {
   if (!token) {
     // TODO: Do this check using React Guards
     return (
-      <div style={{ margin: "1rem 2rem" }}>
+      <div className="main-container">
         <Title>My Orders</Title>
         <h2>Unauthorized</h2>
         <h3>Log-in needed to see this page.</h3>

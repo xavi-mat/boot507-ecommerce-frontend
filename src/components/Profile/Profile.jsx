@@ -24,7 +24,7 @@ function Profile() {
   if (!token) {
     // TODO: Do this check using React Guards?
     return (
-      <div style={{ margin: "1rem 2rem" }}>
+      <div className="main_container">
         <Title>My Profile</Title>
         <h2>Unauthorized</h2>
         <h3>Log-in needed to see this page.</h3>
@@ -44,7 +44,7 @@ function Profile() {
   }
 
   return (
-    <div style={{ margin: '1rem 2rem' }}>
+    <div className="main-container">
       <Title>My Profile</Title>
       <Row>
         <Col span={8}>
