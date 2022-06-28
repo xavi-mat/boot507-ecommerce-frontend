@@ -23,11 +23,11 @@ function Profile() {
 
   if (!token) {
     return (
-      <div style={{ margin: "1rem 2rem" }}>
+      <div className="main_container">
         <Card>
-          <Title>My Profile</Title>
-          <h2>Unauthorized</h2>
-          <h3>Log-in needed to see this page.</h3>
+        <Title>My Profile</Title>
+        <h2>Unauthorized</h2>
+        <h3>Log-in needed to see this page.</h3>
           <p>Please, try to <Link to="/login">Log in</Link></p>
         </Card>
       </div>
@@ -46,7 +46,7 @@ function Profile() {
   }
 
   return (
-    <div style={{ margin: '1rem 2rem' }}>
+    <div className="main-container">
       <Title>My Profile</Title>
       <Row>
         <Col span={8}>

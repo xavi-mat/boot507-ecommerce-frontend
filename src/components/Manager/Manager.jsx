@@ -11,7 +11,7 @@ function Manager() {
 
   if (!(["admin", "manager"].includes(user?.role))) {
     return (
-      <div style={{ margin: "1rem 2rem" }}>
+      <div className="main-container">
         <Card>
           <Title>Manager</Title>
           <h2>Unauthorized</h2>
@@ -22,7 +22,7 @@ function Manager() {
     )
   } else {
     return (
-      <div style={{ margin: "1rem 2rem" }}>
+      <div className="main-container">
         <Title>Manager</Title>
         <ManagerList />
       </div>

@@ -51,7 +51,7 @@ function Header() {
 
   return (
     <>
-      <div style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+      <div className="header-cont">
         <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
       </div>
       <div><h1 style={{ color: "#00000000" }}>Blank Space</h1></div>

@@ -2,7 +2,7 @@ function Footer() {
   return (
     <>
       <div><h3 style={{ color: "#00000000" }}>Blank Space</h3></div>
-      <footer
+      <footer 
         style={{
           textAlign: 'center',
           backgroundColor: 'white',

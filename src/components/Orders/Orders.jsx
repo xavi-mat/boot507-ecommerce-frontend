@@ -16,7 +16,7 @@ function Orders() {
 
   if (!token) {
     return (
-      <div style={{ margin: "1rem 2rem" }}>
+      <div className="main-container">
         <Card>
           <Title>My Orders</Title>
           <h2>Unauthorized</h2>
