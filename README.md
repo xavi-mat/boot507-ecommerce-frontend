@@ -65,32 +65,59 @@ https://github.com/xavi-mat/boot507-ecommerce-frontend
 ### Rutas
 Listado completo
 
-|Ruta|Nombre|Rol|Uso|
-|----+------+---+---|
-|`/`|Inicio|||
-|`/products`|Productos|||
-|`/product/?`|Producto ?|||
-|`/cart`|Carrito|||
-|`/register`|Registro|||
-|`/login`|Acceso|||
-|`/premium`|Cliente premium|||
-|`/orders`|Pedidos|||
-|`/profile`|Perfil|||
-|`/manager`|Gerente|||
-|`/admin`|Administrador|||
+|Ruta        |Nombre|Rol  |Uso|
+|------------|------|-----|---|
+|`/`         |Inicio|todos|Página de inicio|
+|`/products` |Productos|todos|Listado de productos|
+|`/product/:id`|Producto individual|todos|Vista de un producto con sus reseñas|
+|`/cart`     |Carrito|todos|Carrito|
+|`/register`|Registro|no logueado|Formulario de registro|
+|`/login`|Acceso|no logueado|Formulario de acceso|
+|`/premium`|Cliente premium|premium|Vista para clientes premium|
+|`/orders`|Pedidos|logueado|Listado de pedidos realizados|
+|`/profile`|Perfil|logueado|Perfil con los datos del usuario|
+|`/manager`|Gerente|manager|CRUD de productos|
+|`/admin`|Administrador|admin|Gestión de reseñas|
 
 #### `/` Inicio
+Presenta la página principal con el logo y un carrusel de imágenes.
+
 #### `/products` Productos
-#### `/product/?` Producto ?
+Presenta el listado de todos los productos. Cada uno en una tarjeta con su imagen, nombre, descripción, precio y el botón "añadir al carrito". La parte central de cada tarjeta es clicable, y lleva a la página del producto.
+
+#### `/product/:id` Producto individual
+Página de cada producto individual. Presenta la imagen en grande, el nombre, la descripción, el precio y un botón "añadir al carrito".
+Incluye la media de las valoraciones y el listado de reseñas con sus valoraciones. En cada reseña se puede ver el username y el avatar de quién las escribió, el texto y la valoración individual que puso.
+
+Los usuarios logueados que no han hecho todavía reseña a ese producto en concreto ven también un formulario para hacer su valoración y escribir su comentario. Los que ya han hecho una reseña, la ven resaltada en color amarillo y tienen la opción de borrarla.
+
 #### `/cart` Carrito
+Listado de productos que han sido añadidos en el carrito. Cada uno en una tarjeta con la imagen, nombre, descripción, precio y la cantidad incluida en el carrito. Se incluyen también dos botones uno con (+) para añadir uno a la cantidad y otro con (-) para eliminar uno. Si la cantidad queda a 0, el producto se elimina del carrito.
+
 #### `/register` Registro
+
+
 #### `/login` Acceso
+
+
 #### `/premium` Cliente premium
+
+
 #### `/orders` Pedidos
+
+
 #### `/profile` Perfil
+
+
 #### `/manager` Gerente
+
+
 #### `/admin` Administrador
 
+
+### Funcionalidades
+* Al **añadir al carrito** ...
+* ...
 ## Agradecimientos
 * ...
 
